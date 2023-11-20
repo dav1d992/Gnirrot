@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "Name": "Sofas & Couches"
+  },
+  {
+    "Id": 2,
+    "Name": "Dining Tables & Chairs"
+  },
+  {
+    "Id": 3,
+    "Name": "Bedroom Sets"
+  },
+  {
+    "Id": 4,
+    "Name": "Coffee Tables"
+  },
+  {
+    "Id": 5,
+    "Name": "Office Desks"
+  },
+  {
+    "Id": 6,
+    "Name": "Bookcases & Shelves"
+  },
+  {
+    "Id": 7,
+    "Name": "Outdoor Furniture"
+  }
+]

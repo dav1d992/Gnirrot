@@ -1,0 +1,35 @@
+[
+  {
+    "Id": 1,
+    "Name": "John Wayne Sofa",
+    "Price": 4500,
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1541919833074-a92ca380fa4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMDQ5OTc5OXw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Modern Dining Table",
+    "Price": 2800,
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1560185008-b033106af5c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMDQ5OTgyOXw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Comfortable Office Chair",
+    "Price": 1300,
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1571055931484-22dce9d6c510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMDQ5OTk1NHw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  }
+]
