@@ -1,0 +1,47 @@
+:host {
+  ::ng-deep {
+    .p-card {
+      width: 30dvh;
+      background: var(--background-color);
+
+      .p-card-body {
+        padding-top: 0;
+      }
+
+      .p-card-content {
+        padding-top: 0;
+      }
+    }
+
+    .p-inputtext {
+      width: 100%;
+    }
+  }
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-profile-picture {
+  margin: 2dvh;
+  width: 26dvh;
+  border-radius: 5%;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.margin-bot-only {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.info-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.full {
+  width: 100%;
+}

@@ -1,0 +1,113 @@
+<div class="h-stack gap full">
+  <p-card
+    header="{{ member?.knownAs }}"
+    subheader="{{ member?.gender | titlecase }}, {{ member?.age }}"
+    [style]="{ width: '30dvh' }"
+  >
+    <ng-template pTemplate="header">
+      <div class="img-container">
+        <img
+          src="{{ member?.photoUrl || './assets/user.png' }}"
+          alt="{{ member?.knownAs }}"
+          class="user-profile-picture"
+        />
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <button
+        form="editForm"
+        pButton
+        type="button"
+        icon="pi pi-save"
+        class="p-button-success"
+        [disabled]="!editForm?.dirty"
+        (click)="editForm?.ngSubmit?.emit()"
+      ></button>
+    </ng-template>
+    <div class="info-container">
+      <h4 class="margin-bot-only">Location:</h4>
+      <p class="no-margins">{{ member?.country }}, {{ member?.city }}</p>
+    </div>
+
+    <div class="info-container">
+      <h4 class="margin-bot-only">Last active:</h4>
+      <p class="no-margins">
+        {{ member?.lastActive | timeAgo }}
+      </p>
+    </div>
+
+    <div class="info-container">
+      <h4 class="margin-bot-only">Member since:</h4>
+      <p class="no-margins">{{ member?.lastActive | date : "mediumDate" }}</p>
+    </div>
+
+    <div class="info-container">
+      <h4 class="margin-bot-only">Interests:</h4>
+      <p class="no-margins">{{ member?.interests }}</p>
+    </div>
+  </p-card>
+
+  <p-tabView>
+    <p-tabPanel header="About me" *ngIf="member">
+      <form #editForm="ngForm" (ngSubmit)="updateMember()">
+        <div class="info-container">
+          <h3 class="margin-bot-only">Introduction:</h3>
+          <textarea
+            class="form-control"
+            name="introduction"
+            rows="5"
+            cols="100"
+            pInputTextarea
+            [(ngModel)]="member!.introduction"
+          ></textarea>
+        </div>
+        <div class="info-container">
+          <h3 class="margin-bot-only">Looking for:</h3>
+          <textarea
+            class="form-control"
+            name="lookingFor"
+            rows="5"
+            cols="100"
+            pInputTextarea
+            [(ngModel)]="member!.lookingFor"
+          ></textarea>
+        </div>
+        <div class="info-container">
+          <h3 class="margin-bot-only">Interests:</h3>
+          <textarea
+            class="form-control"
+            name="interests"
+            rows="5"
+            cols="100"
+            pInputTextarea
+            [(ngModel)]="member!.interests"
+          ></textarea>
+        </div>
+      </form>
+      <div *ngIf="editForm?.dirty">
+        <p>
+          <strong>Beware⚠️ </strong>You have made changes. Any unsaved changes
+          will be lost
+        </p>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Photos">
+      Photo edit my friend
+      <!-- <p-galleria
+        [value]="images"
+        [responsiveOptions]="responsiveOptions"
+        [containerStyle]="{ 'max-width': '640px' }"
+        [numVisible]="5"
+      >
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item.url" style="width: 100%" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+          <div class="grid grid-nogutter justify-content-center">
+            <img [src]="item.url" />
+          </div>
+        </ng-template>
+      </p-galleria> -->
+    </p-tabPanel>
+  </p-tabView>
+</div>

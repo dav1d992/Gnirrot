@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/primeng.min.css";
+@import "primeicons/primeicons.css";
+
+:root {
+  --standardFont: "Lexend", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--standardFont);
+}
+
+.h-stack {
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.h-stack-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.h-stack-space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.h-stack-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.gap {
+  gap: 1dvh;
+}
+
+.gap-x2 {
+  gap: 2dvh;
+}
+
+.badge {
+  background-color: #f0f0f0;
+  font-style: italic;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.no-margins {
+  margin: 0;
+}

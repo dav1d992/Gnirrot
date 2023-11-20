@@ -1,0 +1,51 @@
+<p-menubar [model]="navOptions">
+  <ng-template pTemplate="end">
+    <div class="h-stack-center gap">
+      <form
+        *ngIf="!currentUser"
+        #loginForm="ngForm"
+        (ngSubmit)="login()"
+        autocomplete="off"
+      >
+        <input
+          pInputText
+          type="text"
+          name="username"
+          [(ngModel)]="model.username"
+          placeholder="Username"
+          class="w-full form-control"
+        />
+        <input
+          pInputText
+          type="password"
+          name="password"
+          [(ngModel)]="model.password"
+          placeholder="Password"
+          class="w-full form-control"
+        />
+        <button
+          pButton
+          type="button"
+          label="Login"
+          type="submit"
+          class="p-button-success"
+        ></button>
+      </form>
+
+      <p-splitButton
+        *ngIf="currentUser"
+        label="{{ currentUser.userName | titlecase }}"
+        icon="pi pi-user"
+        class="p-button-rounded"
+        [model]="userOptions"
+        appendTo="body"
+      ></p-splitButton>
+      <button
+        class="p-button-secondary"
+        pButton
+        icon="{{ darkMode ? 'pi pi-sun' : 'pi pi-moon' }}"
+        (click)="toggleTheme()"
+      ></button>
+    </div>
+  </ng-template>
+</p-menubar>

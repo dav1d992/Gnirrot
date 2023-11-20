@@ -1,0 +1,62 @@
+<p-card>
+  <div *ngIf="!registerMode">
+    <h2>Welcome, friend! <br />Enjoy your time! 😊</h2>
+    <div class="h-stack-center gap">
+      <button pButton type="button" (click)="toggleRegisterMode()">
+        <p>Register</p>
+      </button>
+      <button pButton type="button">
+        <p>Learn more</p>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="registerMode">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register-user
+          (cancelRegister)="cancelRegisterMode($event)"
+        ></app-register-user>
+      </div>
+    </div>
+  </div>
+</p-card>
+
+<p-carousel
+  [value]="users"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+  [autoplayInterval]="2500"
+  [responsiveOptions]="responsiveOptions"
+>
+  <ng-template let-user pTemplate="item">
+    <div class="carousel-item">
+      <div class="carousel-item-content">
+        <div>
+          <h2>{{ user.userName }}</h2>
+          <h4>User's id is {{ user.id }} and that is very relevant.</h4>
+          <div>
+            <button
+              pButton
+              type="button"
+              icon="pi pi-search"
+              class="p-button-primary"
+            ></button>
+            <button
+              pButton
+              type="button"
+              icon="pi pi-star"
+              class="p-button-help"
+            ></button>
+            <button
+              pButton
+              type="button"
+              icon="pi pi-cog"
+              class="p-button-warning"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>

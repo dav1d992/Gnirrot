@@ -1,0 +1,42 @@
+<p-card
+  [style]="{ width: '20dvh' }"
+  *ngIf="member"
+  routerLink="/members/{{ member.userName }}"
+>
+  <div class="image-container">
+    <img
+      src="{{ member.photoUrl || './assets/user.png' }}"
+      alt="{{ member.knownAs }}"
+      class="user-image"
+    />
+    <div class="nickname">{{ member.knownAs }}</div>
+  </div>
+  <div class="details-container">
+    <div class="h-stack-space-between">
+      <h2 class="no-margins">{{ member.userName | titlecase }}</h2>
+      <p-avatar class="p-avatar-text">{{ member.age }}</p-avatar>
+    </div>
+    <p>{{ member.country }}, {{ member.city }}</p>
+    <p-divider></p-divider>
+    <div class="h-stack-right gap">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-comments"
+        class="p-button-warning"
+      ></button>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-heart"
+        class="p-button-danger"
+      ></button>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-arrow-right"
+        class="p-button-success"
+      ></button>
+    </div>
+  </div>
+</p-card>
