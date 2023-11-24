@@ -31,7 +31,7 @@ public class Seed
 
         foreach (var product in products)
         {
-            product.Category = categories[1];
+            product.Category = categories.FirstOrDefault(category => category.Name == product.Category.Name);
             context.Products.Add(product);
         }
 
