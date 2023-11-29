@@ -45,7 +45,18 @@ public class Seed
             using var hmac = new HMACSHA512();
 
             user.ShortName = user.ShortName.ToLower();
-            user.Role = roles[0];
+            if (user.ShortName == "lis")
+            {
+                user.Role = roles[0]; // Admin 
+            }
+            else if (user.ShortName == "anp")
+            {
+                user.Role = roles[1]; // Employer 
+            }
+            else
+            {
+                user.Role = roles[2]; // Employee 
+            }
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("Pa$$w0rd"));
             user.PasswordSalt = hmac.Key;
 

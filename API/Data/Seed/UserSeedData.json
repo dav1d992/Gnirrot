@@ -1,35 +1,39 @@
 [
   {
+    "ShortName": "SAND",
+    "FirstName": "Søren",
+    "LastName": "Andersen",
+    "DateOfBirth": "1986-04-11",
+    "Created": "2022-01-28",
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/men/36.jpg"
+  },
+  {
     "ShortName": "LIS",
-    "FirstName": "Lisa",
+    "FirstName": "Lisa Eva",
     "LastName": "Thorsen",
     "DateOfBirth": "1986-07-22",
     "Created": "2020-06-24",
-    "Workplace": "Aarhus"
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/women/59.jpg"
   },
   {
     "ShortName": "JHA",
     "FirstName": "Jesper",
     "LastName": "Hansen",
-    "DateOfBirth": "1996-03-18",
+    "DateOfBirth": "1991-03-18",
     "Created": "2022-03-20",
-    "Workplace": "Aarhus"
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/men/51.jpg"
   },
   {
     "ShortName": "MET",
     "FirstName": "Mette",
     "LastName": "Christensen",
-    "DateOfBirth": "1983-08-12",
+    "DateOfBirth": "1995-08-12",
     "Created": "2020-11-04",
-    "Workplace": "Aarhus"
-  },
-  {
-    "ShortName": "IRA",
-    "FirstName": "Ida",
-    "LastName": "Rasmussen",
-    "DateOfBirth": "1992-05-24",
-    "Created": "2022-07-09",
-    "Workplace": "Aarhus"
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/women/68.jpg"
   },
   {
     "ShortName": "ANP",
@@ -37,23 +41,26 @@
     "LastName": "Petersen",
     "DateOfBirth": "1982-10-03",
     "Created": "2022-02-24",
-    "Workplace": "Aarhus"
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/men/33.jpg"
+  },
+  {
+    "ShortName": "LARS",
+    "FirstName": "Lars Skov",
+    "LastName": "Larsen",
+    "DateOfBirth": "1988-02-20",
+    "Created": "2021-11-15",
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/men/22.jpg"
   },
   {
     "ShortName": "ASN",
-    "FirstName": "Asta",
+    "FirstName": "Asta Britt",
     "LastName": "Nielsen",
-    "DateOfBirth": "1979-04-22",
+    "DateOfBirth": "1989-04-22",
     "Created": "2021-10-12",
-    "Workplace": "Aarhus"
-  },
-  {
-    "ShortName": "FRP",
-    "FirstName": "Freja",
-    "LastName": "Pedersen",
-    "DateOfBirth": "1970-07-22",
-    "Created": "2021-01-08",
-    "Workplace": "Aarhus"
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/women/84.jpg"
   },
   {
     "ShortName": "KARJ",
@@ -61,7 +68,8 @@
     "LastName": "Jensen",
     "DateOfBirth": "1990-12-23",
     "Created": "2022-04-16",
-    "Workplace": "Aarhus"
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/men/3.jpg"
   },
   {
     "ShortName": "SIGA",
@@ -69,38 +77,16 @@
     "LastName": "Andersen",
     "DateOfBirth": "1981-09-08",
     "Created": "2021-12-24",
-    "Workplace": "Aarhus"
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/women/26.jpg"
   },
   {
-    "ShortName": "MAD",
-    "FirstName": "Mads",
+    "ShortName": "BMAD",
+    "FirstName": "Boris",
     "LastName": "Madsen",
     "DateOfBirth": "1989-08-20",
     "Created": "2022-07-25",
-    "Workplace": "Aarhus"
-  },
-  {
-    "ShortName": "SAND",
-    "FirstName": "Søren",
-    "LastName": "Andersen",
-    "DateOfBirth": "1998-04-11",
-    "Created": "2022-01-28",
-    "Workplace": "Aarhus"
-  },
-  {
-    "ShortName": "TIST",
-    "FirstName": "Tinna",
-    "LastName": "Sørensen",
-    "DateOfBirth": "1974-04-06",
-    "Created": "2021-12-21",
-    "Workplace": "Aarhus"
-  },
-  {
-    "ShortName": "LARS",
-    "FirstName": "Lars",
-    "LastName": "Larsen",
-    "DateOfBirth": "1992-02-20",
-    "Created": "2021-11-15",
-    "Workplace": "Aarhus"
+    "Workplace": "Aarhus",
+    "PhotoUrl": "https://randomuser.me/api/portraits/men/11.jpg"
   }
 ]

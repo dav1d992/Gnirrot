@@ -60,12 +60,9 @@ export class NavComponent implements OnInit {
           routerLink: ['/members'],
         },
         {
-          label: 'Matches',
-          icon: 'pi pi-fw pi-heart-fill',
-        },
-        {
-          label: 'Messages',
-          icon: 'pi pi-fw pi-comment',
+          label: 'Products',
+          icon: 'pi pi-fw pi-th-large',
+          routerLink: ['/products'],
         }
       );
     }

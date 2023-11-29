@@ -10,5 +10,6 @@ public class MemberDto
     public DateOnly DateOfBirth { get; set; }
     public DateTime Created { get; set; }
     public string Workplace { get; set; }
+    public string PhotoUrl { get; set; }
     public Role Role { get; set; }
 }

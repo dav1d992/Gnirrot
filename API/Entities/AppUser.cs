@@ -13,6 +13,7 @@ namespace API.Entities
         public DateOnly DateOfBirth { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public string Workplace { get; set; }
+        public string PhotoUrl { get; set; }
         public Role Role { get; set; }
     }
 }

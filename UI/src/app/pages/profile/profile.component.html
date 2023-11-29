@@ -1,14 +1,14 @@
 <div class="h-stack gap full">
   <p-card
-    header="{{ member?.knownAs }}"
-    subheader="{{ member?.gender | titlecase }}, {{ member?.age }}"
+    header="{{ member?.shortName }}"
+    subheader="{{ member?.firstName | titlecase }}, {{ member?.lastName }}"
     [style]="{ width: '30dvh' }"
   >
     <ng-template pTemplate="header">
       <div class="img-container">
         <img
           src="{{ member?.photoUrl || './assets/user.png' }}"
-          alt="{{ member?.knownAs }}"
+          alt="{{ member?.shortName }}"
           class="user-profile-picture"
         />
       </div>
@@ -26,30 +26,32 @@
     </ng-template>
     <div class="info-container">
       <h4 class="margin-bot-only">Location:</h4>
-      <p class="no-margins">{{ member?.country }}, {{ member?.city }}</p>
+      <p class="no-margins">
+        {{ member?.workplace }}, {{ member?.dateOfBirth }}
+      </p>
     </div>
 
     <div class="info-container">
-      <h4 class="margin-bot-only">Last active:</h4>
+      <h4 class="margin-bot-only">Role:</h4>
       <p class="no-margins">
-        {{ member?.lastActive | timeAgo }}
+        {{ member?.role }}
       </p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Member since:</h4>
-      <p class="no-margins">{{ member?.lastActive | date : "mediumDate" }}</p>
+      <p class="no-margins">{{ member?.created | date : "mediumDate" }}</p>
     </div>
 
     <div class="info-container">
-      <h4 class="margin-bot-only">Interests:</h4>
-      <p class="no-margins">{{ member?.interests }}</p>
+      <h4 class="margin-bot-only">Birthday:</h4>
+      <p class="no-margins">{{ member?.dateOfBirth | date : "mediumDate" }}</p>
     </div>
   </p-card>
 
   <p-tabView>
     <p-tabPanel header="About me" *ngIf="member">
-      <form #editForm="ngForm" (ngSubmit)="updateMember()">
+      <!-- <form #editForm="ngForm" (ngSubmit)="updateMember()">
         <div class="info-container">
           <h3 class="margin-bot-only">Introduction:</h3>
           <textarea
@@ -58,7 +60,7 @@
             rows="5"
             cols="100"
             pInputTextarea
-            [(ngModel)]="member!.introduction"
+            [(ngModel)]="member!."
           ></textarea>
         </div>
         <div class="info-container">
@@ -83,7 +85,7 @@
             [(ngModel)]="member!.interests"
           ></textarea>
         </div>
-      </form>
+      </form> -->
       <div *ngIf="editForm?.dirty">
         <p>
           <strong>Beware⚠️ </strong>You have made changes. Any unsaved changes

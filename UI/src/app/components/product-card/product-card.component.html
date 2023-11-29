@@ -1,23 +1,20 @@
 <p-card
-  [style]="{ width: '20dvh' }"
-  *ngIf="member"
-  routerLink="/members/{{ member.shortName }}"
+  [style]="{ width: '30dvh' }"
+  *ngIf="product"
+  routerLink="/products/{{ product.name }}"
 >
   <div class="image-container">
     <img
-      src="{{ member.photoUrl || './assets/user.png' }}"
-      alt="{{ member.shortName }}"
+      src="{{ product.photoUrl || './assets/user.png' }}"
       class="user-image"
     />
-    <div class="nickname">{{ member.shortName }}</div>
+    <div class="price">{{ product.price }}</div>
   </div>
   <div class="details-container">
     <div class="h-stack-space-between">
-      <h2 class="no-margins">
-        {{ member.firstName | titlecase }} {{ member.lastName | titlecase }}
-      </h2>
+      <h3 class="no-margins">{{ product.name | titlecase }}</h3>
     </div>
-    <p>{{ member.workplace }}</p>
+    <p>{{ product.categoryName }}</p>
     <p-divider></p-divider>
     <div class="h-stack-right gap">
       <button

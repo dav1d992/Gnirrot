@@ -6,6 +6,8 @@ import { MembersComponent } from '@pages/members/members.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MemberDetailsComponent } from '@pages/member-details/member-details.component';
 import { ProfileComponent } from '@pages/profile/profile.component';
+import { ProductDetailsComponent } from '@pages/product-details/product-details.component';
+import { ProductsComponent } from '@pages/products/products.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,8 @@ const routes: Routes = [
     children: [
       { path: 'members', component: MembersComponent },
       { path: 'members/:username', component: MemberDetailsComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'products/:id', component: ProductDetailsComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'messages', component: MembersComponent },
     ],

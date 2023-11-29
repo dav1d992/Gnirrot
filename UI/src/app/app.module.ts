@@ -29,6 +29,9 @@ import { TabViewModule } from 'primeng/tabview';
 import { GalleriaModule } from 'primeng/galleria';
 import { ProfileComponent } from '@pages/profile/profile.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ProductDetailsComponent } from '@pages/product-details/product-details.component';
+import { ProductsComponent } from '@pages/products/products.component';
+import { ProductCardComponent } from '@components/product-card/product-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     MembersComponent,
     MemberCardComponent,
     MemberDetailsComponent,
+    ProductDetailsComponent,
+    ProductsComponent,
     ProfileComponent,
+    ProductCardComponent,
     TimeAgoPipe,
   ],
   imports: [
