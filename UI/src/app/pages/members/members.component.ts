@@ -20,7 +20,6 @@ export class MembersComponent implements OnInit {
     this.memberService.getMembers().subscribe({
       next: (members) => {
         this.members = members;
-        console.log('tt', this.members);
       },
     });
   }

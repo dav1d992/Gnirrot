@@ -1,7 +1,7 @@
 <div class="h-stack gap">
   <p-card
     header="{{ member?.shortName }}"
-    subheader="{{ member?.firstName | titlecase }}, {{ member?.lastName }}"
+    subheader="{{ member?.firstName | titlecase }} {{ member?.lastName }}"
     [style]="{ width: '30dvh' }"
   >
     <ng-template pTemplate="header">

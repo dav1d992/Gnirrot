@@ -10,7 +10,7 @@ export class MemberCardComponent implements OnInit {
   @Input() public member!: Member;
 
   user = {
-    picture: 'https://via.placeholder.com/200', // replace with user's picture URL
+    picture: 'https://via.placeholder.com/200',
     name: 'John Doe',
     nickname: 'JD',
     age: 30,

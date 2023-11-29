@@ -20,8 +20,23 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProducts().subscribe({
       next: (products) => {
         this.products = products;
-        console.log('tt', this.products);
       },
     });
+  }
+
+  filterProducts(filterValue: any) {
+    if (!filterValue) {
+      this.loadProducts();
+    } else {
+      this.productsService.getProducts().subscribe({
+        next: (products) => {
+          this.products = products.filter((product) =>
+            product.name
+              .toLowerCase()
+              .includes(filterValue.target.value.toLowerCase())
+          );
+        },
+      });
+    }
   }
 }
