@@ -32,6 +32,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ProductDetailsComponent } from '@pages/product-details/product-details.component';
 import { ProductsComponent } from '@pages/products/products.component';
 import { ProductCardComponent } from '@components/product-card/product-card.component';
+import { StatisticsComponent } from '@pages/statistics/statistics.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { ProductCardComponent } from '@components/product-card/product-card.comp
     ProductsComponent,
     ProfileComponent,
     ProductCardComponent,
+    StatisticsComponent,
     TimeAgoPipe,
   ],
   imports: [
