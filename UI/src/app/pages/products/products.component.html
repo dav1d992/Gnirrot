@@ -8,12 +8,13 @@
   <p-dropdown
     [options]="categoryOptions"
     [(ngModel)]="selectedCategory"
+    optionLabel="name"
     placeholder="Select a Category"
     (onChange)="filterProductsByCategory($event.value)"
   ></p-dropdown>
 </div>
 <div class="h-stack-center gap-x2 w-100">
-  <div class="col-2" *ngFor="let product of products">
+  <div class="col-2" *ngFor="let product of productsToDisplay">
     <app-product-card [product]="product"></app-product-card>
   </div>
 </div>

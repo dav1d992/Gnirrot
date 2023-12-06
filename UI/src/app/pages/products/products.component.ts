@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from '@models/category';
 import { Product } from '@models/product';
-import { CategoriesService } from '@services/category.service';
+import { CategoryService } from '@services/category.service';
 import { ProductsService } from '@services/products.service';
-import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-products',
@@ -10,57 +10,62 @@ import { SelectItem } from 'primeng/api';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: Product[] = [];
-  selectedCategory: string | null = null;
-
-  categoryOptions: SelectItem[] = [
-    { label: 'Category A', value: 'A' },
-    { label: 'Category B', value: 'B' },
-    { label: 'Category C', value: 'C' },
-  ];
+  allProducts: Product[] = [];
+  filteredProducts: Product[] = [];
+  selectedCategory: Category = <Category>{ id: 0, name: 'All' };
+  categoryOptions: Category[] = [<Category>{ id: 0, name: 'All' }];
+  filterText: string = '';
 
   constructor(
     private productsService: ProductsService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoryService
   ) {}
 
   ngOnInit() {
     this.loadProducts();
+    this.loadCategories();
+  }
+
+  get productsToDisplay() {
+    return this.filteredProducts.length > 0 ||
+      this.selectedCategory.id !== 0 ||
+      this.filterText !== ''
+      ? this.filteredProducts
+      : this.allProducts;
   }
 
   loadProducts() {
     this.productsService.getProducts().subscribe({
-      next: (categories) => {
-        this.categoryOptions = categories.map((x) => x.name);
+      next: (products) => {
+        this.allProducts = products;
       },
     });
   }
 
   loadCategories() {
     this.categoriesService.getCategories().subscribe({
-      next: (products) => {
-        this.products = products;
+      next: (categories) => {
+        this.categoryOptions.push(...categories);
       },
     });
   }
 
   filterProducts(filterValue: any) {
-    if (!filterValue) {
-      this.loadProducts();
-    } else {
-      this.productsService.getProducts().subscribe({
-        next: (products) => {
-          this.products = products.filter((product) =>
-            product.name
-              .toLowerCase()
-              .includes(filterValue.target.value.toLowerCase())
-          );
-        },
-      });
-    }
+    this.filterText = filterValue.target.value.toLowerCase();
+
+    this.filteredProducts = this.allProducts.filter(
+      (product) =>
+        (this.selectedCategory.id === 0 ||
+          product.category.name === this.selectedCategory.name) &&
+        product.name.toLowerCase().includes(this.filterText)
+    );
   }
 
-  filterProductsByCategory(category: string) {
-    this.products.filter((product) => product.categoryName === category);
+  filterProductsByCategory(category: Category) {
+    this.filteredProducts = this.allProducts.filter(
+      (product) =>
+        (category.id === 0 || product.category.name === category.name) &&
+        product.name.toLowerCase().includes(this.filterText)
+    );
   }
 }

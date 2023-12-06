@@ -1,7 +1,7 @@
 <div class="h-stack gap">
   <p-card
     header="{{ product?.name }}"
-    subheader="{{ product?.categoryName | titlecase }}, {{ product?.price }}"
+    subheader="{{ product?.category?.name | titlecase }}, {{ product?.price }}"
     [style]="{ width: '30dvh' }"
   >
     <ng-template pTemplate="header">
@@ -28,7 +28,7 @@
     <div class="info-container">
       <h4 class="margin-bot-only">Member since:</h4>
       <p class="no-margins">
-        {{ product?.categoryName | date : "mediumDate" }}
+        {{ product?.category?.name }}
       </p>
     </div>
 
