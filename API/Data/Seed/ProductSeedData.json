@@ -3,6 +3,7 @@
     "Id": 1,
     "Name": "John Wayne Sofa",
     "Price": 4500,
+    "AmountInStock": 20,
     "Category": {
       "Name": "Sofas & Couches"
     },
@@ -17,6 +18,7 @@
     "Id": 2,
     "Name": "Modern Dining Table",
     "Price": 2800,
+    "AmountInStock": 12,
     "Category": {
       "Name": "Dining Tables & Chairs"
     },
@@ -29,8 +31,9 @@
   },
   {
     "Id": 3,
-    "Name": "Comfortable Office Chair",
+    "Name": "Ron Office Chair",
     "Price": 1300,
+    "AmountInStock": 9,
     "Category": {
       "Name": "Office Desks"
     },

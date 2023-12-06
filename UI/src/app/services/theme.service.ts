@@ -8,7 +8,6 @@ import { Inject, Injectable } from '@angular/core';
 export class ThemeService {
   private themeLink = this.document.getElementById('theme') as HTMLLinkElement;
   public theme: string | null = null;
-  public assetsPath = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
     if (localStorage.getItem('theme')) {
@@ -28,18 +27,6 @@ export class ThemeService {
     this.updateCssVariables();
   }
 
-  public isDarkMode(): boolean {
-    if (!this.theme) {
-      return false;
-    }
-
-    if (this.theme === 'bootstrap4-dark-blue') {
-      return true;
-    }
-
-    return false;
-  }
-
   private updateCssVariables() {
     if (this.isDarkMode()) {
       this.document.documentElement.style.setProperty(
@@ -52,5 +39,17 @@ export class ThemeService {
         'rgba(239, 239, 239)'
       );
     }
+  }
+
+  public isDarkMode(): boolean {
+    if (!this.theme) {
+      return false;
+    }
+
+    if (this.theme === 'bootstrap4-dark-blue') {
+      return true;
+    }
+
+    return false;
   }
 }
