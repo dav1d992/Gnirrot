@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '@models/product';
+import { CategoriesService } from '@services/category.service';
 import { ProductsService } from '@services/products.service';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-products',
@@ -9,8 +11,18 @@ import { ProductsService } from '@services/products.service';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
+  selectedCategory: string | null = null;
 
-  constructor(private productsService: ProductsService) {}
+  categoryOptions: SelectItem[] = [
+    { label: 'Category A', value: 'A' },
+    { label: 'Category B', value: 'B' },
+    { label: 'Category C', value: 'C' },
+  ];
+
+  constructor(
+    private productsService: ProductsService,
+    private categoriesService: CategoriesService
+  ) {}
 
   ngOnInit() {
     this.loadProducts();
@@ -18,6 +30,14 @@ export class ProductsComponent implements OnInit {
 
   loadProducts() {
     this.productsService.getProducts().subscribe({
+      next: (categories) => {
+        this.categoryOptions = categories.map((x) => x.name);
+      },
+    });
+  }
+
+  loadCategories() {
+    this.categoriesService.getCategories().subscribe({
       next: (products) => {
         this.products = products;
       },
@@ -38,5 +58,9 @@ export class ProductsComponent implements OnInit {
         },
       });
     }
+  }
+
+  filterProductsByCategory(category: string) {
+    this.products.filter((product) => product.categoryName === category);
   }
 }

@@ -16,7 +16,7 @@
   },
   {
     "Id": 2,
-    "Name": "Modern Dining Table",
+    "Name": "Wood Dining Table",
     "Price": 2800,
     "AmountInStock": 12,
     "Category": {
@@ -40,6 +40,126 @@
     "Photos": [
       {
         "Url": "https://images.unsplash.com/photo-1571055931484-22dce9d6c510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMDQ5OTk1NHw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": "James Couch",
+    "Price": 8800,
+    "AmountInStock": 5,
+    "Category": {
+      "Name": "Sofas & Couches"
+    },
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1563204885-5651f7da2b48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NTc4MHw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Name": "Edison Couch",
+    "Price": 2800,
+    "AmountInStock": 4,
+    "Category": {
+      "Name": "Sofas & Couches"
+    },
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1576909023157-8cfea9e53818?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NTc4MHw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "Name": "Flat Curve Couch",
+    "Price": 6100,
+    "AmountInStock": 5,
+    "Category": {
+      "Name": "Sofas & Couches"
+    },
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1512212621149-107ffe572d2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NjU1N3w&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "Name": "Brownee Sofa",
+    "Price": 7050,
+    "AmountInStock": 8,
+    "Category": {
+      "Name": "Sofas & Couches"
+    },
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1540574163026-643ea20ade25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NjY0Mnw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "Name": "Wood Dining Table",
+    "Price": 2100,
+    "AmountInStock": 29,
+    "Category": {
+      "Name": "Dining Tables & Chairs"
+    },
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1578625494482-d40f3018683f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NjcyNXw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "Name": "Wood Dining Table",
+    "Price": 5850,
+    "AmountInStock": 7,
+    "Category": {
+      "Name": "Dining Tables & Chairs"
+    },
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1617850687361-a07b256ff259?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NjcyNXw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "Name": "Wooden Desk Light",
+    "Price": 3950,
+    "AmountInStock": 3,
+    "Category": {
+      "Name": "Office Desks"
+    },
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1483470134942-13bbf4677d84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2Njg5MXw&ixlib=rb-4.0.3&q=80&w=1080",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Id": 11,
+    "Name": "Royal Wood Table",
+    "Price": 11770,
+    "AmountInStock": 2,
+    "Category": {
+      "Name": "Office Desks"
+    },
+    "Photos": [
+      {
+        "Url": "https://images.unsplash.com/photo-1595846265893-f433f6cca81d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2Njk2OXw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
     ]
