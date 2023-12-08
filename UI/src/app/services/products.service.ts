@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Product } from '@models/product';
 import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,10 +8,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ProductsService {
+  private readonly http = inject(HttpClient);
   baseUrl = environment.apiUrl;
   products: Product[] = [];
-
-  constructor(private http: HttpClient) {}
 
   getProducts() {
     if (this.products.length > 0) return of(this.products);

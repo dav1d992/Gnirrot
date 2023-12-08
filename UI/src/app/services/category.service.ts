@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Category } from '@models/category';
 import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,10 +8,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CategoryService {
+  private readonly http = inject(HttpClient);
   baseUrl = environment.apiUrl;
   categories: Category[] = [];
-
-  constructor(private http: HttpClient) {}
 
   getCategories() {
     if (this.categories.length > 0) return of(this.categories);

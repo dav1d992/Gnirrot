@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Member } from '@models/member';
 import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,10 +8,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class MembersService {
+  private readonly http = inject(HttpClient);
+
   baseUrl = environment.apiUrl;
   members: Member[] = [];
-
-  constructor(private http: HttpClient) {}
 
   getMembers() {
     if (this.members.length > 0) return of(this.members);

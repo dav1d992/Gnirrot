@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
@@ -8,11 +8,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AccountService {
-  baseUrl = environment.apiUrl;
+  private readonly http = inject(HttpClient);
   private currentUserSource = new BehaviorSubject<User | null>(null);
-  public currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient) {}
+  currentUser$ = this.currentUserSource.asObservable();
+  baseUrl = environment.apiUrl;
 
   public login(model: any) {
     return this.http.post<User>(this.baseUrl + 'accounts/login', model).pipe(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Member } from '@models/member';
 import { Photo } from '@models/photo';
@@ -10,6 +10,9 @@ import { MembersService } from '@services/members.service';
   styleUrls: ['./member-details.component.scss'],
 })
 export class MemberDetailsComponent implements OnInit {
+  private readonly memberService = inject(MembersService);
+  private readonly route = inject(ActivatedRoute);
+
   member: Member | undefined;
   responsiveOptions = [
     {
@@ -26,11 +29,6 @@ export class MemberDetailsComponent implements OnInit {
     },
   ];
   images: Photo[] = [];
-
-  constructor(
-    private memberService: MembersService,
-    private route: ActivatedRoute
-  ) {}
 
   ngOnInit(): void {
     this.loadMember();

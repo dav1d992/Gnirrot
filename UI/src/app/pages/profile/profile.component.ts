@@ -1,4 +1,10 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Member } from '@models/member';
 import { ToastProps } from '@models/toast-props';
@@ -22,6 +28,11 @@ export class ProfileComponent implements OnInit {
       $event.returnValue = true;
     }
   }
+
+  private readonly accountService = inject(AccountService);
+  private readonly membersService = inject(MembersService);
+  private readonly toastService = inject(ToastService);
+
   member: Member | undefined;
   user: User | null = null;
   responsiveOptions = [
@@ -39,31 +50,23 @@ export class ProfileComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private accountService: AccountService,
-    private memberService: MembersService,
-    private toastService: ToastService
-  ) {
+  ngOnInit(): void {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: (user) => (this.user = user),
     });
-  }
-
-  ngOnInit(): void {
     this.loadMember();
   }
 
   loadMember() {
     if (!this.user) return;
-    this.memberService.getMember(this.user.userName).subscribe({
+    this.membersService.getMember(this.user.userName).subscribe({
       next: (member) => (this.member = member),
     });
   }
 
   updateMember() {
-    this.memberService.updateMember(this.editForm?.value).subscribe({
+    this.membersService.updateMember(this.editForm?.value).subscribe({
       next: (_) => {
-        // this.toastService.success('Profile updated successfully');
         console.log('LOLOLOL');
         this.toastService.showToast(<ToastProps>{
           title: 'lol',

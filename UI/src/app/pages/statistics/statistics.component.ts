@@ -5,6 +5,7 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { Member } from '@models/member';
 import { MembersService } from '@services/members.service';
@@ -21,12 +22,13 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('lineChart', { read: ElementRef, static: false })
   public lineChartRef: ElementRef | null = null;
 
+  private readonly membersService = inject(MembersService);
+
   barChart!: Chart;
   lineChart!: Chart;
 
   members: Member[] = [];
 
-  constructor(private memberService: MembersService) {}
   ngOnDestroy(): void {
     if (this.barChart) {
       this.barChart.destroy();
@@ -43,7 +45,7 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   loadMembers() {
-    this.memberService.getMembers().subscribe({
+    this.membersService.getMembers().subscribe({
       next: (members) => {
         this.members = members;
         this.initializeBarChart();

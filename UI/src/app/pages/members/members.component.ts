@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Member } from '@models/member';
 import { MembersService } from '@services/members.service';
 
@@ -8,9 +8,8 @@ import { MembersService } from '@services/members.service';
   styleUrls: ['./members.component.scss'],
 })
 export class MembersComponent implements OnInit {
+  private readonly memberService = inject(MembersService);
   members: Member[] = [];
-
-  constructor(private memberService: MembersService) {}
 
   ngOnInit() {
     this.loadMembers();

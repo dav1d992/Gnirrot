@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { Injectable, inject } from '@angular/core';
 import { SEVERITY_LEVEL, ToastProps } from '@models/toast-props';
 import { AccountService } from '@services/account.service';
 import { ToastService } from '@services/toast.service';
@@ -8,11 +7,9 @@ import { map, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
-  constructor(
-    private accountService: AccountService,
-    private toastService: ToastService
-  ) {}
+export class AuthGuard {
+  private accountService = inject(AccountService);
+  private toastService = inject(ToastService);
 
   canActivate(): Observable<boolean> {
     return this.accountService.currentUser$.pipe(

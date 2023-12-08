@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ToastProps, SEVERITY_LEVEL } from '@models/toast-props';
 import { ToastService } from '@services/toast.service';
 
@@ -8,13 +8,12 @@ import { ToastService } from '@services/toast.service';
   templateUrl: './test-error.component.html',
   styleUrls: ['./test-error.component.scss'],
 })
-export class TestErrorComponent implements OnInit {
+export class TestErrorComponent {
+  private readonly http = inject(HttpClient);
+  private readonly toastService = inject(ToastService);
+
   baseUrl = 'http://localhost:5025/api/';
   validationErrors: string[] = [];
-
-  constructor(private http: HttpClient, private toastService: ToastService) {}
-
-  ngOnInit(): void {}
 
   get404Error() {
     this.http.get(this.baseUrl + 'buggy/not-found').subscribe({

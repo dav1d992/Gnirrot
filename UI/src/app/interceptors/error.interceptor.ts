@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -13,7 +13,8 @@ import { SEVERITY_LEVEL, ToastProps } from '@models/toast-props';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private toastService: ToastService) {}
+  private readonly router = inject(Router);
+  private readonly toastService = inject(ToastService);
 
   intercept(
     request: HttpRequest<unknown>,

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { SEVERITY_LEVEL, ToastProps } from '@models/toast-props';
 import { MessageService } from 'primeng/api';
 
@@ -6,7 +6,7 @@ import { MessageService } from 'primeng/api';
   providedIn: 'root',
 })
 export class ToastService {
-  constructor(private messageService: MessageService) {}
+  private readonly messageService = inject(MessageService);
 
   public showToast(props: ToastProps) {
     if (props.severity === SEVERITY_LEVEL.Error) {

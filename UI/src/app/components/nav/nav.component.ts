@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { User } from '@models/user';
 import { MenuItem } from 'primeng/api';
 import { AccountService } from 'src/app/services/account.service';
@@ -10,16 +10,14 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
+  private readonly accountService = inject(AccountService);
+  private readonly themeService = inject(ThemeService);
+  private user?: User;
+
   public navOptions: MenuItem[] = [];
   public userOptions: MenuItem[] = [];
   public model: any = {};
   public darkMode = false;
-  private user?: User;
-
-  constructor(
-    private accountService: AccountService,
-    private themeService: ThemeService
-  ) {}
 
   get currentUser(): User | undefined {
     return this.user ?? undefined;

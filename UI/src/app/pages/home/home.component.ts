@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,28 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  private readonly http = inject(HttpClient);
+
   public registerMode = false;
-  public responsiveOptions: any[];
+  public responsiveOptions = [
+    {
+      breakpoint: '1024px',
+      numVisible: 3,
+      numScroll: 3,
+    },
+    {
+      breakpoint: '768px',
+      numVisible: 2,
+      numScroll: 2,
+    },
+    {
+      breakpoint: '480px',
+      numVisible: 1,
+      numScroll: 1,
+    },
+  ];
   public users: any;
-  constructor(private http: HttpClient) {
-    this.responsiveOptions = [
-      {
-        breakpoint: '1024px',
-        numVisible: 3,
-        numScroll: 3,
-      },
-      {
-        breakpoint: '768px',
-        numVisible: 2,
-        numScroll: 2,
-      },
-      {
-        breakpoint: '480px',
-        numVisible: 1,
-        numScroll: 1,
-      },
-    ];
-  }
 
   ngOnInit() {
     this.getUsers();

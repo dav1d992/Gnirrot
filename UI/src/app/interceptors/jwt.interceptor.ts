@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -10,7 +10,7 @@ import { AccountService } from '@services/account.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private accountService: AccountService) {}
+  private readonly accountService = inject(AccountService);
 
   intercept(
     request: HttpRequest<unknown>,

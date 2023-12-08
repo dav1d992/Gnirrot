@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
@@ -6,13 +6,10 @@ import { AccountService } from 'src/app/services/account.service';
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.scss'],
 })
-export class RegisterUserComponent implements OnInit {
+export class RegisterUserComponent {
+  private readonly accountService = inject(AccountService);
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
-
-  constructor(private accountService: AccountService) {}
-
-  ngOnInit(): void {}
 
   public register() {
     this.accountService.register(this.model).subscribe({

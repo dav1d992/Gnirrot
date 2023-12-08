@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Photo } from '@models/photo';
 import { Product } from '@models/product';
@@ -10,6 +10,9 @@ import { ProductsService } from '@services/products.service';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
+  private readonly productsService = inject(ProductsService);
+  private readonly route = inject(ActivatedRoute);
+
   product: Product | undefined;
   responsiveOptions = [
     {
@@ -27,11 +30,6 @@ export class ProductDetailsComponent implements OnInit {
   ];
   images: Photo[] = [];
 
-  constructor(
-    private productService: ProductsService,
-    private route: ActivatedRoute
-  ) {}
-
   ngOnInit(): void {
     this.loadProduct();
   }
@@ -48,7 +46,7 @@ export class ProductDetailsComponent implements OnInit {
   loadProduct() {
     var id = this.route.snapshot.paramMap.get('id');
     if (!id) return;
-    this.productService.getProduct(Number(id)).subscribe({
+    this.productsService.getProduct(Number(id)).subscribe({
       next: (product) => {
         this.product = product;
         this.images = this.getImages();
