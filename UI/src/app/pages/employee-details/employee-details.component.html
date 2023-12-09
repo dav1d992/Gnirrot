@@ -1,38 +1,38 @@
 <div class="h-stack gap">
   <p-card
-    header="{{ member?.shortName }}"
-    subheader="{{ member?.firstName | titlecase }} {{ member?.lastName }}"
+    header="{{ employee?.shortName }}"
+    subheader="{{ employee?.firstName | titlecase }} {{ employee?.lastName }}"
     [style]="{ width: '30dvh' }"
   >
     <ng-template pTemplate="header">
       <div class="img-container">
         <img
-          src="{{ member?.photoUrl || './assets/user.png' }}"
-          alt="{{ member?.shortName }}"
-          class="user-profile-picture"
+          src="{{ employee?.photoUrl || './assets/employee.png' }}"
+          alt="{{ employee?.shortName }}"
+          class="employee-profile-picture"
         />
       </div>
     </ng-template>
     <div class="info-container">
       <h4 class="margin-bot-only">Location:</h4>
-      <p class="no-margins">{{ member?.workplace }}</p>
+      <p class="no-margins">{{ employee?.workplace }}</p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Joined:</h4>
       <p class="no-margins">
-        {{ member?.created | timeAgo }}
+        {{ employee?.created | timeAgo }}
       </p>
     </div>
 
     <div class="info-container">
-      <h4 class="margin-bot-only">Member since:</h4>
-      <p class="no-margins">{{ member?.created | date : "mediumDate" }}</p>
+      <h4 class="margin-bot-only">Employee since:</h4>
+      <p class="no-margins">{{ employee?.created | date : "mediumDate" }}</p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Birthday:</h4>
-      <p class="no-margins">{{ member?.dateOfBirth }}</p>
+      <p class="no-margins">{{ employee?.dateOfBirth }}</p>
     </div>
   </p-card>
   <p-tabView>

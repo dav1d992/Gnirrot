@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { User } from '@models/user';
+import { Account } from '@models/account';
 import { MenuItem } from 'primeng/api';
 import { AccountService } from 'src/app/services/account.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -12,18 +12,18 @@ import { ThemeService } from 'src/app/services/theme.service';
 export class NavComponent implements OnInit {
   private readonly accountService = inject(AccountService);
   private readonly themeService = inject(ThemeService);
-  private user?: User;
+  private account?: Account;
 
   public navOptions: MenuItem[] = [];
   public userOptions: MenuItem[] = [];
   public model: any = {};
   public darkMode = false;
 
-  get currentUser(): User | undefined {
-    return this.user ?? undefined;
+  get currentUser(): Account | undefined {
+    return this.account ?? undefined;
   }
-  set currentUser(value: User | undefined) {
-    this.user = value;
+  set currentUser(value: Account | undefined) {
+    this.account = value;
     this.setNavOptions();
   }
 
@@ -31,7 +31,7 @@ export class NavComponent implements OnInit {
     this.darkMode = this.themeService.isDarkMode();
 
     this.accountService.currentUser$.subscribe((user) => {
-      if (user === null) this.user = undefined;
+      if (user === null) this.account = undefined;
       else {
         this.currentUser = user;
       }
@@ -53,9 +53,9 @@ export class NavComponent implements OnInit {
         1,
         0,
         {
-          label: 'Members',
+          label: 'Employees',
           icon: 'pi pi-fw pi-users',
-          routerLink: ['/members'],
+          routerLink: ['/employees'],
         },
         {
           label: 'Products',
@@ -90,7 +90,7 @@ export class NavComponent implements OnInit {
 
   public login() {
     this.accountService.login(this.model).subscribe({
-      next: (response) => {
+      next: () => {
         this.setNavOptions();
       },
       error: (error) => console.log(error),

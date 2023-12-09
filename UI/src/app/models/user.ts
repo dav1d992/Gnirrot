@@ -1,4 +1,11 @@
 export interface User {
-  userName: string;
-  token: string;
+  id: number;
+  shortName: string;
+  firstName: string;
+  lastName: string;
+  photoUrl: string;
+  created: Date;
+  dateOfBirth: Date;
+  workplace: string;
+  role: string;
 }

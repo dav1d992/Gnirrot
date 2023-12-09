@@ -1,23 +1,23 @@
 <p-card
   [style]="{ width: '20dvh' }"
-  *ngIf="member"
-  routerLink="/members/{{ member.shortName }}"
+  *ngIf="employee"
+  routerLink="/employees/{{ employee.shortName }}"
 >
   <div class="image-container">
     <img
-      src="{{ member.photoUrl || './assets/user.png' }}"
-      alt="{{ member.shortName }}"
+      src="{{ employee.photoUrl || './assets/user.png' }}"
+      alt="{{ employee.shortName }}"
       class="user-image"
     />
-    <div class="nickname">{{ member.shortName }}</div>
+    <div class="nickname">{{ employee.shortName }}</div>
   </div>
   <div class="details-container">
     <div class="h-stack-space-between">
       <h2 class="no-margins">
-        {{ member.firstName | titlecase }} {{ member.lastName | titlecase }}
+        {{ employee.firstName | titlecase }} {{ employee.lastName | titlecase }}
       </h2>
     </div>
-    <p>{{ member.workplace }}</p>
+    <p>{{ employee.workplace }}</p>
     <p-divider></p-divider>
     <div class="h-stack-right gap">
       <button

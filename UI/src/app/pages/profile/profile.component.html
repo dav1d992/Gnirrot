@@ -1,14 +1,14 @@
 <div class="h-stack gap full">
   <p-card
-    header="{{ member?.firstName | titlecase }} {{ member?.lastName }}"
-    subheader="{{ member?.shortName | uppercase }}"
+    header="{{ user?.firstName | titlecase }} {{ user?.lastName }}"
+    subheader="{{ user?.shortName | uppercase }}"
     [style]="{ width: '40dvh' }"
   >
     <ng-template pTemplate="header">
       <div class="img-container">
         <img
-          src="{{ member?.photoUrl || './assets/user.png' }}"
-          alt="{{ member?.shortName }}"
+          src="{{ user?.photoUrl || './assets/user.png' }}"
+          alt="{{ user?.shortName }}"
           class="user-profile-picture"
         />
       </div>
@@ -27,30 +27,30 @@
     <div class="info-container">
       <h4 class="margin-bot-only">Location:</h4>
       <p class="no-margins">
-        {{ member?.workplace }}
+        {{ user?.workplace }}
       </p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Role:</h4>
       <p class="no-margins">
-        {{ member?.role }}
+        {{ user?.role }}
       </p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Hired:</h4>
-      <p class="no-margins">{{ member?.created | date : "mediumDate" }}</p>
+      <p class="no-margins">{{ user?.created | date : "mediumDate" }}</p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Birthday:</h4>
-      <p class="no-margins">{{ member?.dateOfBirth | date : "mediumDate" }}</p>
+      <p class="no-margins">{{ user?.dateOfBirth | date : "mediumDate" }}</p>
     </div>
   </p-card>
 
   <p-tabView>
-    <p-tabPanel header="Performance" *ngIf="member">
+    <p-tabPanel header="Performance" *ngIf="user">
       <div *ngIf="editForm?.dirty">
         <p>
           <strong>Beware⚠️ </strong>You have made changes. Any unsaved changes

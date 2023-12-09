@@ -1,19 +1,19 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Member } from '@models/member';
+import { User } from '@models/user';
 import { Photo } from '@models/photo';
-import { MembersService } from '@services/members.service';
+import { UserService } from '@services/user.service';
 
 @Component({
-  selector: 'app-member-details',
-  templateUrl: './member-details.component.html',
-  styleUrls: ['./member-details.component.scss'],
+  selector: 'app-employee-details',
+  templateUrl: './employee-details.component.html',
+  styleUrls: ['./employee-details.component.scss'],
 })
-export class MemberDetailsComponent implements OnInit {
-  private readonly memberService = inject(MembersService);
+export class EmployeeDetailsComponent implements OnInit {
+  private readonly userService = inject(UserService);
   private readonly route = inject(ActivatedRoute);
 
-  member: Member | undefined;
+  employee: User | undefined;
   responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -31,15 +31,15 @@ export class MemberDetailsComponent implements OnInit {
   images: Photo[] = [];
 
   ngOnInit(): void {
-    this.loadMember();
+    this.loadEmployee();
   }
 
-  loadMember() {
+  loadEmployee() {
     var username = this.route.snapshot.paramMap.get('username');
     if (!username) return;
-    this.memberService.getMember(username).subscribe({
-      next: (member) => {
-        this.member = member;
+    this.userService.getUser(username).subscribe({
+      next: (employee) => {
+        this.employee = employee;
       },
     });
   }

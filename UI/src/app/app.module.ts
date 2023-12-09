@@ -20,10 +20,10 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { MembersComponent } from '@pages/members/members.component';
-import { MemberCardComponent } from '@components/member-card/member-card.component';
+import { EmployeesComponent } from '@pages/employees/employees.component';
+import { EmployeeCardComponent } from '@components/employee-card/employee-card.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { MemberDetailsComponent } from '@pages/member-details/member-details.component';
+import { EmployeeDetailsComponent } from '@pages/employee-details/employee-details.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { TabViewModule } from 'primeng/tabview';
 import { GalleriaModule } from 'primeng/galleria';
@@ -39,9 +39,9 @@ import { StatisticsComponent } from '@pages/statistics/statistics.component';
     NavComponent,
     HomeComponent,
     RegisterUserComponent,
-    MembersComponent,
-    MemberCardComponent,
-    MemberDetailsComponent,
+    EmployeesComponent,
+    EmployeeCardComponent,
+    EmployeeDetailsComponent,
     ProductDetailsComponent,
     ProductsComponent,
     ProfileComponent,

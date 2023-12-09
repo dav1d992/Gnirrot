@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { TestErrorComponent } from './components/test-error/test-error.component';
-import { MembersComponent } from '@pages/members/members.component';
+import { EmployeesComponent } from '@pages/employees/employees.component';
 import { AuthGuard } from './guards/auth.guard';
-import { MemberDetailsComponent } from '@pages/member-details/member-details.component';
+import { EmployeeDetailsComponent } from '@pages/employee-details/employee-details.component';
 import { ProfileComponent } from '@pages/profile/profile.component';
 import { ProductDetailsComponent } from '@pages/product-details/product-details.component';
 import { ProductsComponent } from '@pages/products/products.component';
@@ -20,12 +20,12 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'members', component: MembersComponent },
-      { path: 'members/:username', component: MemberDetailsComponent },
+      { path: 'employees', component: EmployeesComponent },
+      { path: 'employees/:username', component: EmployeeDetailsComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', component: ProductDetailsComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: 'messages', component: MembersComponent },
+      { path: 'messages', component: EmployeesComponent },
       { path: 'statistics', component: StatisticsComponent },
     ],
   },

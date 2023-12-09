@@ -6,11 +6,11 @@ import {
   inject,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Member } from '@models/member';
-import { ToastProps } from '@models/toast-props';
 import { User } from '@models/user';
+import { ToastProps } from '@models/toast-props';
+import { Account } from '@models/account';
 import { AccountService } from '@services/account.service';
-import { MembersService } from '@services/members.service';
+import { UserService } from '@services/user.service';
 import { ToastService } from '@services/toast.service';
 import { take } from 'rxjs';
 
@@ -30,11 +30,11 @@ export class ProfileComponent implements OnInit {
   }
 
   private readonly accountService = inject(AccountService);
-  private readonly membersService = inject(MembersService);
+  private readonly userService = inject(UserService);
   private readonly toastService = inject(ToastService);
 
-  member: Member | undefined;
-  user: User | null = null;
+  user: User | undefined;
+  account: Account | null = null;
   responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -52,20 +52,20 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
+      next: (user) => (this.account = user),
+    });
+    this.loadUser();
+  }
+
+  loadUser() {
+    if (!this.account) return;
+    this.userService.getUser(this.account.userName).subscribe({
       next: (user) => (this.user = user),
     });
-    this.loadMember();
   }
 
-  loadMember() {
-    if (!this.user) return;
-    this.membersService.getMember(this.user.userName).subscribe({
-      next: (member) => (this.member = member),
-    });
-  }
-
-  updateMember() {
-    this.membersService.updateMember(this.editForm?.value).subscribe({
+  updateUser() {
+    this.userService.updateUser(this.editForm?.value).subscribe({
       next: (_) => {
         console.log('LOLOLOL');
         this.toastService.showToast(<ToastProps>{
@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
           description: 'lolol',
           severity: 'info',
         });
-        this.editForm?.reset(this.member);
+        this.editForm?.reset(this.user);
       },
     });
   }

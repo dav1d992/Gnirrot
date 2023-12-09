@@ -3,12 +3,11 @@ import {
   Component,
   ElementRef,
   OnDestroy,
-  OnInit,
   ViewChild,
   inject,
 } from '@angular/core';
-import { Member } from '@models/member';
-import { MembersService } from '@services/members.service';
+import { User } from '@models/user';
+import { UserService } from '@services/user.service';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -22,12 +21,12 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('lineChart', { read: ElementRef, static: false })
   public lineChartRef: ElementRef | null = null;
 
-  private readonly membersService = inject(MembersService);
+  private readonly userService = inject(UserService);
 
   barChart!: Chart;
   lineChart!: Chart;
 
-  members: Member[] = [];
+  users: User[] = [];
 
   ngOnDestroy(): void {
     if (this.barChart) {
@@ -41,13 +40,13 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.loadMembers();
+    this.loadUsers();
   }
 
-  loadMembers() {
-    this.membersService.getMembers().subscribe({
-      next: (members) => {
-        this.members = members;
+  loadUsers() {
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users;
         this.initializeBarChart();
         this.initializeLineChart();
       },
@@ -55,21 +54,21 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   initializeBarChart() {
-    const memberShortNames = this.members.map((member) =>
-      member.shortName.toUpperCase()
+    const userShortNames = this.users.map((user) =>
+      user.shortName.toUpperCase()
     );
-    const fullNames = this.members.map(
-      (member) => member.firstName + ' ' + member.lastName
+    const fullNames = this.users.map(
+      (user) => user.firstName + ' ' + user.lastName
     );
-    const dataValues = this.members.map(
-      (member) => Math.floor(Math.random() * 100) + 1
+    const dataValues = this.users.map(
+      (user) => Math.floor(Math.random() * 100) + 1
     );
 
     if (this.barChartRef)
       this.barChart = new Chart(this.barChartRef.nativeElement, {
         type: 'bar',
         data: {
-          labels: memberShortNames,
+          labels: userShortNames,
           datasets: [
             {
               label: 'Some value',
@@ -100,12 +99,12 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   initializeLineChart() {
-    const labels = this.members.map((member) => member.shortName.toUpperCase());
-    const fullNames = this.members.map(
-      (member) => member.firstName + ' ' + member.lastName
+    const labels = this.users.map((user) => user.shortName.toUpperCase());
+    const fullNames = this.users.map(
+      (user) => user.firstName + ' ' + user.lastName
     );
-    const dataValues = this.members.map(
-      (member, index) => Math.floor(Math.random() * 100) + 1
+    const dataValues = this.users.map(
+      (user, index) => Math.floor(Math.random() * 100) + 1
     );
 
     if (this.lineChartRef)
