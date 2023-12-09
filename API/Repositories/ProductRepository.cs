@@ -1,11 +1,11 @@
+using API.Data;
 using API.DTOs;
-using API.Entities;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Data;
+namespace API.Repositories;
 public class ProductRepository : IProductRepository
 {
     private readonly DataContext _context;

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{D73D06BB-5CFE-4217-A593-03C733B17058}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gnirrot.Tests", "Gnirrot.Tests\Gnirrot.Tests.csproj", "{4E2457B6-A9EE-4D9C-A0E3-099A3D1F21AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{D73D06BB-5CFE-4217-A593-03C733B17058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D73D06BB-5CFE-4217-A593-03C733B17058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D73D06BB-5CFE-4217-A593-03C733B17058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E2457B6-A9EE-4D9C-A0E3-099A3D1F21AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E2457B6-A9EE-4D9C-A0E3-099A3D1F21AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E2457B6-A9EE-4D9C-A0E3-099A3D1F21AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E2457B6-A9EE-4D9C-A0E3-099A3D1F21AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
