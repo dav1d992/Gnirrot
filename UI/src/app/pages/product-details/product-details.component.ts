@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Photo } from '@models/photo';
 import { Product } from '@models/product';
-import { ProductsService } from '@services/products.service';
+import { ProductService } from '@services/product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -10,7 +10,7 @@ import { ProductsService } from '@services/products.service';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  private readonly productsService = inject(ProductsService);
+  private readonly productService = inject(ProductService);
   private readonly route = inject(ActivatedRoute);
 
   product: Product | undefined;
@@ -46,7 +46,7 @@ export class ProductDetailsComponent implements OnInit {
   loadProduct() {
     var id = this.route.snapshot.paramMap.get('id');
     if (!id) return;
-    this.productsService.getProduct(Number(id)).subscribe({
+    this.productService.getProduct(Number(id)).subscribe({
       next: (product) => {
         this.product = product;
         this.images = this.getImages();
