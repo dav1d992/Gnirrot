@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AccountService } from './services/account.service';
 import { Account } from './models/account';
+import { userActions } from '@store/user';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,12 @@ import { Account } from './models/account';
 })
 export class AppComponent implements OnInit {
   private readonly accountService = inject(AccountService);
+  private readonly store = inject(Store);
   title = 'UI';
 
   ngOnInit(): void {
+    // this.store.dispatch(userActions.getUsers());
+
     this.setCurrentUser();
   }
 

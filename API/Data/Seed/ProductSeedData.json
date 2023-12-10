@@ -3,7 +3,6 @@
     "Id": 1,
     "Name": "John Wayne Sofa",
     "Price": 4500,
-    "AmountInStock": 20,
     "Category": {
       "Name": "Sofas & Couches"
     },
@@ -12,7 +11,12 @@
         "Url": "https://images.unsplash.com/photo-1541919833074-a92ca380fa4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMDQ5OTc5OXw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [{
+      "Name": "Sofas & Couches"
+    }],
+    "Started": "2021-10-12",
+    "Ended": "2021-10-15"  
   },
   {
     "Id": 2,

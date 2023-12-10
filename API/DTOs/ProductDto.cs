@@ -12,4 +12,7 @@ public class ProductDto
     public string CategoryName { get; set; }
     public Category Category { get; set; }
     public List<PhotoDto> Photos { get; set; }
+    public List<Material> Materials { get; set; }
+    public DateTime Started { get; set; } = DateTime.UtcNow;
+    public DateTime Ended { get; set; }
 }

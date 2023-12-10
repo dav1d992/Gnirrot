@@ -33,6 +33,12 @@ import { ProductDetailsComponent } from '@pages/product-details/product-details.
 import { ProductsComponent } from '@pages/products/products.component';
 import { ProductCardComponent } from '@components/product-card/product-card.component';
 import { StatisticsComponent } from '@pages/statistics/statistics.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from '@store/user/user.effect';
+import { userFeature } from '@store/user';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +74,12 @@ import { StatisticsComponent } from '@pages/statistics/statistics.component';
     TabViewModule,
     GalleriaModule,
     InputTextareaModule,
+    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot({}),
+    StoreModule.forFeature(userFeature),
+    StoreDevtoolsModule.instrument({
+      maxAge: 500,
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
