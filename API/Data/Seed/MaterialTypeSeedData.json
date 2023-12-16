@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "Name": "Basswood"
+  },
+  {
+    "Id": 2,
+    "Name": "Aluminum"
+  },
+  {
+    "Id": 3,
+    "Name": "Plastic"
+  },
+  {
+    "Id": 4,
+    "Name": "Walnut wood"
+  },
+  {
+    "Id": 5,
+    "Name": "Steel"
+  },
+  {
+    "Id": 6,
+    "Name": "Chipboard"
+  },
+  {
+    "Id": 7,
+    "Name": "Oak wood"
+  }
+]

@@ -14,6 +14,6 @@ namespace API.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Material> Materials { get; set; }
-        public DbSet<MaterialCategory> MaterialCategories { get; set; }
+        public DbSet<MaterialType> MaterialTypes { get; set; }
     }
 }

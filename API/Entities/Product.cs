@@ -10,7 +10,8 @@ public class Product
     public int Price { get; set; }
     public List<Photo> Photos { get; set; } = new();
     public List<Material> Materials { get; set; }
-    public DateTime Started { get; set; } = DateTime.UtcNow;
+    public DateTime Created { get; set; } = DateTime.UtcNow;
+    public DateTime Started { get; set; }
     public DateTime Ended { get; set; }
     public AppUser Employee { get; set; }
     public Category Category { get; set; }

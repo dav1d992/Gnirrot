@@ -1,5 +1,3 @@
-using API.Extensions;
-
 namespace API.Entities
 {
     public class AppUser
@@ -11,7 +9,7 @@ namespace API.Entities
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public DateOnly DateOfBirth { get; set; }
-        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public DateTime Joined { get; set; } = DateTime.UtcNow;
         public string Workplace { get; set; }
         public string PhotoUrl { get; set; }
         public Role Role { get; set; }

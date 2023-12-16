@@ -1,14 +1,13 @@
 using API.Data;
 using API.Entities;
 using API.Interfaces;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories;
 public class CategoryRepository : ICategoryRepository
 {
     private readonly DataContext _context;
-    public CategoryRepository(DataContext context, IMapper mapper)
+    public CategoryRepository(DataContext context)
     {
         _context = context;
     }

@@ -12,6 +12,8 @@ public class Seed
     {
         if (await context.Users.AnyAsync()) return;
 
+        var materialTypeData = await File.ReadAllTextAsync("Data/Seed/MaterialTypeSeedData.json");
+        var materialData = await File.ReadAllTextAsync("Data/Seed/MaterialSeedData.json");
         var categoryData = await File.ReadAllTextAsync("Data/Seed/CategorySeedData.json");
         var productData = await File.ReadAllTextAsync("Data/Seed/ProductSeedData.json");
         var roleData = await File.ReadAllTextAsync("Data/Seed/RoleSeedData.json");
@@ -19,6 +21,8 @@ public class Seed
 
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
+        var materialTypes = JsonSerializer.Deserialize<List<MaterialType>>(materialTypeData, options);
+        var materials = JsonSerializer.Deserialize<List<Material>>(materialData, options);
         var categories = JsonSerializer.Deserialize<List<Category>>(categoryData, options);
         var products = JsonSerializer.Deserialize<List<Product>>(productData, options);
         var roles = JsonSerializer.Deserialize<List<Role>>(roleData, options);
