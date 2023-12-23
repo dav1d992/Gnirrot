@@ -3,41 +3,62 @@
     "Id": 1,
     "Name": "John Wayne Sofa",
     "Price": 4500,
-    "Category": {
-      "Name": "Sofas & Couches"
-    },
     "Photos": [
       {
         "Url": "https://images.unsplash.com/photo-1541919833074-a92ca380fa4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMDQ5OTc5OXw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
     ],
-    "Materials": [{
+    "Materials": [
+      {
+        "Name": "Tiny rod"
+      },
+      {
+        "Name": "Medium plate"
+      },
+      {
+        "Name": "Plate M White"
+      }
+    ],
+    "Started": "2023-10-12",
+    "Ended": "2023-10-15",
+    "Category": {
       "Name": "Sofas & Couches"
-    }],
-    "Started": "2021-10-12",
-    "Ended": "2021-10-15"  
+    },
+    "Created": "2023-10-10"
   },
   {
     "Id": 2,
     "Name": "Wood Dining Table",
     "Price": 2800,
-    "AmountInStock": 12,
-    "Category": {
-      "Name": "Dining Tables & Chairs"
-    },
     "Photos": [
       {
         "Url": "https://images.unsplash.com/photo-1560185008-b033106af5c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMDQ5OTgyOXw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Large plate"
+      },
+      {
+        "Name": "Thin plate"
+      },
+      {
+        "Name": "Large Oak Wood Shelf"
+      }
+    ],
+    "Started": "2023-10-22",
+    "Ended": "2023-10-23",
+    "Category": {
+      "Name": "Dining Tables & Chairs"
+    },
+    "Created": "2023-10-19"
   },
   {
     "Id": 3,
     "Name": "Ron Office Chair",
     "Price": 1300,
-    "AmountInStock": 9,
     "Category": {
       "Name": "Office Desks"
     },
@@ -46,13 +67,26 @@
         "Url": "https://images.unsplash.com/photo-1571055931484-22dce9d6c510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMDQ5OTk1NHw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Medium Oak Wood Shelf"
+      },
+      {
+        "Name": "Medium Glass Shelf"
+      },
+      {
+        "Name": "Small Chipboard Shelf"
+      }
+    ],
+    "Started": "2023-11-02",
+    "Ended": "2023-11-13",
+    "Created": "2023-10-25"
   },
   {
     "Id": 4,
     "Name": "James Couch",
     "Price": 8800,
-    "AmountInStock": 5,
     "Category": {
       "Name": "Sofas & Couches"
     },
@@ -61,13 +95,29 @@
         "Url": "https://images.unsplash.com/photo-1563204885-5651f7da2b48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NTc4MHw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Tiny rod"
+      },
+      {
+        "Name": "Medium plate"
+      },
+      {
+        "Name": "Medium plate"
+      },
+      {
+        "Name": "Plate XL Black"
+      }
+    ],
+    "Started": "2023-11-09",
+    "Ended": "2023-11-13",
+    "Created": "2023-10-28"
   },
   {
     "Id": 5,
     "Name": "Edison Couch",
     "Price": 2800,
-    "AmountInStock": 4,
     "Category": {
       "Name": "Sofas & Couches"
     },
@@ -76,13 +126,29 @@
         "Url": "https://images.unsplash.com/photo-1576909023157-8cfea9e53818?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NTc4MHw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Thin plate"
+      },
+      {
+        "Name": "Steel L Tube"
+      },
+      {
+        "Name": "Plate XL Black"
+      },
+      {
+        "Name": "Small Chipboard Shelf"
+      }
+    ],
+    "Started": "2023-12-01",
+    "Ended": "2023-12-04",
+    "Created": "2023-11-08"
   },
   {
     "Id": 6,
     "Name": "Flat Curve Couch",
     "Price": 6100,
-    "AmountInStock": 5,
     "Category": {
       "Name": "Sofas & Couches"
     },
@@ -91,13 +157,29 @@
         "Url": "https://images.unsplash.com/photo-1512212621149-107ffe572d2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NjU1N3w&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Thin plate"
+      },
+      {
+        "Name": "Steel L Tube"
+      },
+      {
+        "Name": "Plate XL White"
+      },
+      {
+        "Name": "Plate M White"
+      }
+    ],
+    "Started": "2023-12-02",
+    "Ended": "2023-12-06",
+    "Created": "2023-11-18"
   },
   {
     "Id": 7,
     "Name": "Brownee Sofa",
     "Price": 7050,
-    "AmountInStock": 8,
     "Category": {
       "Name": "Sofas & Couches"
     },
@@ -106,13 +188,32 @@
         "Url": "https://images.unsplash.com/photo-1540574163026-643ea20ade25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NjY0Mnw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Steel L Tube"
+      },
+      {
+        "Name": "Medium plate"
+      },
+      {
+        "Name": "Medium Chipboard Shelf"
+      },
+      {
+        "Name": "Small Oak Wood Shelf"
+      },
+      {
+        "Name": "Small Oak Wood Shelf"
+      }
+    ],
+    "Started": "2023-12-02",
+    "Ended": "2023-12-09",
+    "Created": "2023-11-20"
   },
   {
     "Id": 8,
     "Name": "Wood Dining Table",
     "Price": 2100,
-    "AmountInStock": 29,
     "Category": {
       "Name": "Dining Tables & Chairs"
     },
@@ -121,13 +222,32 @@
         "Url": "https://images.unsplash.com/photo-1578625494482-d40f3018683f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NjcyNXw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Steel L Tube"
+      },
+      {
+        "Name": "Medium plate"
+      },
+      {
+        "Name": "Medium Chipboard Shelf"
+      },
+      {
+        "Name": "Small Oak Wood Shelf"
+      },
+      {
+        "Name": "Small Oak Wood Shelf"
+      }
+    ],
+    "Started": "2023-12-01",
+    "Ended": "2023-12-12",
+    "Created": "2023-11-22"
   },
   {
     "Id": 9,
     "Name": "Wood Dining Table",
     "Price": 5850,
-    "AmountInStock": 7,
     "Category": {
       "Name": "Dining Tables & Chairs"
     },
@@ -136,13 +256,23 @@
         "Url": "https://images.unsplash.com/photo-1617850687361-a07b256ff259?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2NjcyNXw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Steel L Tube"
+      },
+      {
+        "Name": "Extra Large Oak Wood Shelf"
+      }
+    ],
+    "Started": "2023-12-11",
+    "Ended": "2023-12-12",
+    "Created": "2023-11-27"
   },
   {
     "Id": 10,
     "Name": "Wooden Desk Light",
     "Price": 3950,
-    "AmountInStock": 3,
     "Category": {
       "Name": "Office Desks"
     },
@@ -151,7 +281,21 @@
         "Url": "https://images.unsplash.com/photo-1483470134942-13bbf4677d84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2Njg5MXw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Steel L Tube"
+      },
+      {
+        "Name": "Small Oak Wood Shelf"
+      },
+      {
+        "Name": "Large Oak Wood Shelf"
+      }
+    ],
+    "Started": "2023-12-10",
+    "Ended": "2023-12-11",
+    "Created": "2023-11-27"
   },
   {
     "Id": 11,
@@ -166,6 +310,20 @@
         "Url": "https://images.unsplash.com/photo-1595846265893-f433f6cca81d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NDYwM3wwfDF8cmFuZG9tfHx8fHx8fHx8MTcwMTg2Njk2OXw&ixlib=rb-4.0.3&q=80&w=1080",
         "IsMain": true
       }
-    ]
+    ],
+    "Materials": [
+      {
+        "Name": "Large Glass Shelf"
+      },
+      {
+        "Name": "Plate XL Black"
+      },
+      {
+        "Name": "Large Oak Wood Shelf"
+      }
+    ],
+    "Started": "2023-12-12",
+    "Ended": "2023-12-18",
+    "Created": "2023-12-03"
   }
 ]

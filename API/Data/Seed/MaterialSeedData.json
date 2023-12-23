@@ -1,30 +1,314 @@
 [
   {
-    "Id": 1,
-    "Name": "Basswood"
+    "Name": "Large plate",
+    "Price": 1900,
+    "AmountInStock": 20,
+    "Width": 120,
+    "Height": 2,
+    "Length": 240,
+    "MaterialType": {
+      "Id": 1
+    },
+    "Id": 1
   },
   {
-    "Id": 2,
-    "Name": "Aluminum"
+    "Name": "Medium plate",
+    "Price": 1500,
+    "AmountInStock": 50,
+    "Width": 60,
+    "Height": 2,
+    "Length": 120,
+    "MaterialType": {
+      "Id": 1
+    },
+    "Id": 11
   },
   {
-    "Id": 3,
-    "Name": "Plastic"
+    "Name": "Tiny rod",
+    "Price": 200,
+    "AmountInStock": 40,
+    "Width": 2,
+    "Height": 2,
+    "Length": 200,
+    "MaterialType": {
+      "Id": 2
+    },
+    "Id": 2
   },
   {
-    "Id": 4,
-    "Name": "Walnut wood"
+    "Name": "Thin plate",
+    "Price": 500,
+    "AmountInStock": 21,
+    "Width": 50,
+    "Height": 1,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 2
+    },
+    "Id": 21
   },
   {
-    "Id": 5,
-    "Name": "Steel"
+    "Name": "Plate XL Black",
+    "Price": 150,
+    "AmountInStock": 16,
+    "Width": 90,
+    "Height": 1,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 3
+    },
+    "Id": 3
   },
   {
-    "Id": 6,
-    "Name": "Chipboard"
+    "Name": "Plate XL White",
+    "Price": 150,
+    "AmountInStock": 14,
+    "Width": 90,
+    "Height": 1,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 3
+    },
+    "Id": 31
   },
   {
-    "Id": 7,
-    "Name": "Oak wood"
+    "Name": "Plate L Black",
+    "Price": 130,
+    "AmountInStock": 18,
+    "Width": 90,
+    "Height": 1,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 3
+    },
+    "Id": 32
+  },
+  {
+    "Name": "Plate L White",
+    "Price": 130,
+    "AmountInStock": 19,
+    "Width": 70,
+    "Height": 1,
+    "Length": 120,
+    "MaterialType": {
+      "Id": 3
+    },
+    "Id": 33
+  },
+  {
+    "Name": "Plate M Black",
+    "Price": 100,
+    "AmountInStock": 28,
+    "Width": 60,
+    "Height": 1,
+    "Length": 90,
+    "MaterialType": {
+      "Id": 3
+    },
+    "Id": 34
+  },
+  {
+    "Name": "Plate M White",
+    "Price": 100,
+    "AmountInStock": 25,
+    "Width": 60,
+    "Height": 1,
+    "Length": 90,
+    "MaterialType": {
+      "Id": 3
+    },
+    "Id": 35
+  },
+  {
+    "Name": "Large plate",
+    "Price": 5000,
+    "AmountInStock": 8,
+    "Width": 130,
+    "Height": 5,
+    "Length": 250,
+    "MaterialType": {
+      "Id": 4
+    },
+    "Id": 4
+  },
+  {
+    "Name": "Medium plate",
+    "Price": 3300,
+    "AmountInStock": 7,
+    "Width": 80,
+    "Height": 5,
+    "Length": 140,
+    "MaterialType": {
+      "Id": 4
+    },
+    "Id": 41
+  },
+  {
+    "Name": "Steel L Tube",
+    "Price": 800,
+    "AmountInStock": 10,
+    "Width": 3,
+    "Height": 3,
+    "Length": 220,
+    "MaterialType": {
+      "Id": 5
+    },
+    "Id": 5
+  },
+  {
+    "Name": "Tiny rod",
+    "Price": 200,
+    "AmountInStock": 44,
+    "Width": 2,
+    "Height": 2,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 5
+    },
+    "Id": 51
+  },
+  {
+    "Name": "Thin plate",
+    "Price": 550,
+    "AmountInStock": 25,
+    "Width": 50,
+    "Height": 1,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 5
+    },
+    "Id": 52
+  },
+  {
+    "Name": "Small Chipboard Shelf",
+    "Price": 155,
+    "AmountInStock": 8,
+    "Width": 60,
+    "Height": 3,
+    "Length": 100,
+    "MaterialType": {
+      "Id": 6
+    },
+    "Id": 6
+  },
+  {
+    "Name": "Medium Chipboard Shelf",
+    "Price": 288,
+    "AmountInStock": 11,
+    "Width": 90,
+    "Height": 3,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 6
+    },
+    "Id": 61
+  },
+  {
+    "Name": "Large Chipboard Shelf",
+    "Price": 490,
+    "AmountInStock": 12,
+    "Width": 120,
+    "Height": 3,
+    "Length": 240,
+    "MaterialType": {
+      "Id": 6
+    },
+    "Id": 62
+  },
+  {
+    "Name": "Extra Large Chipboard Shelf",
+    "Price": 770,
+    "AmountInStock": 13,
+    "Width": 200,
+    "Height": 3,
+    "Length": 365,
+    "MaterialType": {
+      "Id": 6
+    },
+    "Id": 63
+  },
+  {
+    "Name": "Small Oak Wood Shelf",
+    "Price": 755,
+    "AmountInStock": 18,
+    "Width": 60,
+    "Height": 3,
+    "Length": 100,
+    "MaterialType": {
+      "Id": 7
+    },
+    "Id": 7
+  },
+  {
+    "Name": "Medium Oak Wood Shelf",
+    "Price": 1188,
+    "AmountInStock": 9,
+    "Width": 90,
+    "Height": 3,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 7
+    },
+    "Id": 71
+  },
+  {
+    "Name": "Large Oak Wood Shelf",
+    "Price": 1490,
+    "AmountInStock": 11,
+    "Width": 120,
+    "Height": 3,
+    "Length": 240,
+    "MaterialType": {
+      "Id": 7
+    },
+    "Id": 72
+  },
+  {
+    "Name": "Extra Large Oak Wood Shelf",
+    "Price": 1770,
+    "AmountInStock": 1,
+    "Width": 200,
+    "Height": 3,
+    "Length": 365,
+    "MaterialType": {
+      "Id": 7
+    },
+    "Id": 73
+  },
+  {
+    "Name": "Small Glass Shelf",
+    "Price": 530,
+    "AmountInStock": 2,
+    "Width": 18,
+    "Height": 1,
+    "Length": 80,
+    "MaterialType": {
+      "Id": 8
+    },
+    "Id": 8
+  },
+  {
+    "Name": "Medium Glass Shelf",
+    "Price": 612,
+    "AmountInStock": 1,
+    "Width": 30,
+    "Height": 1,
+    "Length": 100,
+    "MaterialType": {
+      "Id": 8
+    },
+    "Id": 81
+  },
+  {
+    "Name": "Large Glass Shelf",
+    "Price": 700,
+    "AmountInStock": 3,
+    "Width": 45,
+    "Height": 1,
+    "Length": 150,
+    "MaterialType": {
+      "Id": 8
+    },
+    "Id": 82
   }
 ]

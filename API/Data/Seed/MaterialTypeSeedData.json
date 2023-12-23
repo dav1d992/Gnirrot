@@ -26,5 +26,9 @@
   {
     "Id": 7,
     "Name": "Oak wood"
+  },
+  {
+    "Id": 8,
+    "Name": "Glass"
   }
 ]

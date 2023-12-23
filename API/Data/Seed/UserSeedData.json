@@ -4,7 +4,7 @@
     "FirstName": "Søren",
     "LastName": "Andersen",
     "DateOfBirth": "1986-04-11",
-    "Created": "2022-01-28",
+    "Joined": "2022-01-28",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/men/36.jpg"
   },
@@ -13,7 +13,7 @@
     "FirstName": "Lisa Eva",
     "LastName": "Thorsen",
     "DateOfBirth": "1986-07-22",
-    "Created": "2020-06-24",
+    "Joined": "2020-06-24",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/women/59.jpg"
   },
@@ -22,7 +22,7 @@
     "FirstName": "Jesper",
     "LastName": "Hansen",
     "DateOfBirth": "1991-03-18",
-    "Created": "2022-03-20",
+    "Joined": "2022-03-20",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/men/51.jpg"
   },
@@ -31,7 +31,7 @@
     "FirstName": "Mette",
     "LastName": "Christensen",
     "DateOfBirth": "1995-08-12",
-    "Created": "2020-11-04",
+    "Joined": "2020-11-04",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/women/68.jpg"
   },
@@ -40,7 +40,7 @@
     "FirstName": "Anders",
     "LastName": "Petersen",
     "DateOfBirth": "1982-10-03",
-    "Created": "2022-02-24",
+    "Joined": "2022-02-24",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/men/33.jpg"
   },
@@ -49,7 +49,7 @@
     "FirstName": "Lars Skov",
     "LastName": "Larsen",
     "DateOfBirth": "1988-02-20",
-    "Created": "2021-11-15",
+    "Joined": "2021-11-15",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/men/22.jpg"
   },
@@ -58,7 +58,7 @@
     "FirstName": "Asta Britt",
     "LastName": "Nielsen",
     "DateOfBirth": "1989-04-22",
-    "Created": "2021-10-12",
+    "Joined": "2021-10-12",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/women/84.jpg"
   },
@@ -67,7 +67,7 @@
     "FirstName": "Karsten",
     "LastName": "Jensen",
     "DateOfBirth": "1990-12-23",
-    "Created": "2022-04-16",
+    "Joined": "2022-04-16",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/men/3.jpg"
   },
@@ -76,7 +76,7 @@
     "FirstName": "Signe",
     "LastName": "Andersen",
     "DateOfBirth": "1981-09-08",
-    "Created": "2021-12-24",
+    "Joined": "2021-12-24",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/women/26.jpg"
   },
@@ -85,7 +85,7 @@
     "FirstName": "Boris",
     "LastName": "Madsen",
     "DateOfBirth": "1989-08-20",
-    "Created": "2022-07-25",
+    "Joined": "2022-07-25",
     "Workplace": "Aarhus",
     "PhotoUrl": "https://randomuser.me/api/portraits/men/11.jpg"
   }

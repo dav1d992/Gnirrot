@@ -28,15 +28,21 @@ public class Seed
         var roles = JsonSerializer.Deserialize<List<Role>>(roleData, options);
         var users = JsonSerializer.Deserialize<List<AppUser>>(userData, options);
 
+
+        foreach (var types in materialTypes)
+        {
+            context.MaterialTypes.Add(types);
+        }
+
+        foreach (var material in materials)
+        {
+            material.MaterialType = materialTypes.FirstOrDefault(type => type.Id == material.MaterialType.Id);
+            context.Materials.Add(material);
+        }
+
         foreach (var category in categories)
         {
             context.Categories.Add(category);
-        }
-
-        foreach (var product in products)
-        {
-            product.Category = categories.FirstOrDefault(category => category.Name == product.Category.Name);
-            context.Products.Add(product);
         }
 
         foreach (var role in roles)
@@ -65,6 +71,20 @@ public class Seed
             user.PasswordSalt = hmac.Key;
 
             context.Users.Add(user);
+        }
+
+        foreach (var product in products)
+        {
+            product.Category = categories.FirstOrDefault(category => category.Name == product.Category.Name);
+            product.Materials = materials.Where(material => product.Materials.Any(pm => pm.Name == material.Name)).ToList();
+
+            var usersWithSpecificRole = users.Where(user => user.Role == roles[2]).ToList();
+
+            var random = new Random();
+            int randomIndex = random.Next(usersWithSpecificRole.Count);
+            product.Employee = usersWithSpecificRole[randomIndex];
+
+            context.Products.Add(product);
         }
 
         await context.SaveChangesAsync();
