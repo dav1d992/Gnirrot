@@ -11,13 +11,13 @@
     ],
     "Materials": [
       {
-        "Name": "Tiny rod"
+        "Id": 1
       },
       {
-        "Name": "Medium plate"
+        "Id": 2
       },
       {
-        "Name": "Plate M White"
+        "Id": 3
       }
     ],
     "Started": "2023-10-12",
@@ -39,13 +39,13 @@
     ],
     "Materials": [
       {
-        "Name": "Large plate"
+        "Id": 6
       },
       {
-        "Name": "Thin plate"
+        "Id": 41
       },
       {
-        "Name": "Large Oak Wood Shelf"
+        "Id": 4
       }
     ],
     "Started": "2023-10-22",
@@ -70,13 +70,13 @@
     ],
     "Materials": [
       {
-        "Name": "Medium Oak Wood Shelf"
+        "Id": 1
       },
       {
-        "Name": "Medium Glass Shelf"
+        "Id": 6
       },
       {
-        "Name": "Small Chipboard Shelf"
+        "Id": 7
       }
     ],
     "Started": "2023-11-02",
@@ -98,16 +98,16 @@
     ],
     "Materials": [
       {
-        "Name": "Tiny rod"
+        "Id": 1
       },
       {
-        "Name": "Medium plate"
+        "Id": 3
       },
       {
-        "Name": "Medium plate"
+        "Id": 3
       },
       {
-        "Name": "Plate XL Black"
+        "Id": 4
       }
     ],
     "Started": "2023-11-09",
@@ -129,16 +129,16 @@
     ],
     "Materials": [
       {
-        "Name": "Thin plate"
+        "Id": 1
       },
       {
-        "Name": "Steel L Tube"
+        "Id": 3
       },
       {
-        "Name": "Plate XL Black"
+        "Id": 3
       },
       {
-        "Name": "Small Chipboard Shelf"
+        "Id": 4
       }
     ],
     "Started": "2023-12-01",
@@ -160,16 +160,16 @@
     ],
     "Materials": [
       {
-        "Name": "Thin plate"
+        "Id": 1
       },
       {
-        "Name": "Steel L Tube"
+        "Id": 3
       },
       {
-        "Name": "Plate XL White"
+        "Id": 3
       },
       {
-        "Name": "Plate M White"
+        "Id": 4
       }
     ],
     "Started": "2023-12-02",
@@ -191,19 +191,16 @@
     ],
     "Materials": [
       {
-        "Name": "Steel L Tube"
+        "Id": 1
       },
       {
-        "Name": "Medium plate"
+        "Id": 8
       },
       {
-        "Name": "Medium Chipboard Shelf"
+        "Id": 81
       },
       {
-        "Name": "Small Oak Wood Shelf"
-      },
-      {
-        "Name": "Small Oak Wood Shelf"
+        "Id": 61
       }
     ],
     "Started": "2023-12-02",
@@ -225,19 +222,16 @@
     ],
     "Materials": [
       {
-        "Name": "Steel L Tube"
+        "Id": 1
       },
       {
-        "Name": "Medium plate"
+        "Id": 8
       },
       {
-        "Name": "Medium Chipboard Shelf"
+        "Id": 81
       },
       {
-        "Name": "Small Oak Wood Shelf"
-      },
-      {
-        "Name": "Small Oak Wood Shelf"
+        "Id": 61
       }
     ],
     "Started": "2023-12-01",
@@ -259,10 +253,16 @@
     ],
     "Materials": [
       {
-        "Name": "Steel L Tube"
+        "Id": 1
       },
       {
-        "Name": "Extra Large Oak Wood Shelf"
+        "Id": 8
+      },
+      {
+        "Id": 81
+      },
+      {
+        "Id": 61
       }
     ],
     "Started": "2023-12-11",
@@ -284,13 +284,16 @@
     ],
     "Materials": [
       {
-        "Name": "Steel L Tube"
+        "Id": 1
       },
       {
-        "Name": "Small Oak Wood Shelf"
+        "Id": 8
       },
       {
-        "Name": "Large Oak Wood Shelf"
+        "Id": 81
+      },
+      {
+        "Id": 61
       }
     ],
     "Started": "2023-12-10",
@@ -313,13 +316,16 @@
     ],
     "Materials": [
       {
-        "Name": "Large Glass Shelf"
+        "Id": 1
       },
       {
-        "Name": "Plate XL Black"
+        "Id": 8
       },
       {
-        "Name": "Large Oak Wood Shelf"
+        "Id": 81
+      },
+      {
+        "Id": 61
       }
     ],
     "Started": "2023-12-12",

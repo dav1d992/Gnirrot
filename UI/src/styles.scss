@@ -25,6 +25,11 @@ body {
   font-family: var(--standardFont);
 }
 
+.v-stack {
+  display: flex;
+  flex-direction: column;
+}
+
 .h-stack {
   display: flex;
   flex-direction: row;
@@ -72,4 +77,12 @@ body {
 
 .no-margins {
   margin: 0;
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
+
+.text-red {
+  color: red;
 }

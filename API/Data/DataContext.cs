@@ -15,5 +15,16 @@ namespace API.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Material> Materials { get; set; }
         public DbSet<MaterialType> MaterialTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configure many-to-many relationship
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.Materials)
+                .WithMany("Products")
+                .UsingEntity(j => j.ToTable("ProductMaterials"));
+        }
     }
 }

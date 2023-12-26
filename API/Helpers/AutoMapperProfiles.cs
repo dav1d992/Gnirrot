@@ -11,6 +11,7 @@ public class AutoMapperProfiles : Profile
         CreateMap<Product, ProductDto>()
             .ForMember(product => product.PhotoUrl,
                 opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url))
+            .ForMember(dto => dto.Materials, opt => opt.MapFrom(src => src.Materials))
             .ForMember(product => product.CategoryName,
                 opt => opt.MapFrom(src => src.Category.Name));
         CreateMap<Photo, PhotoDto>();

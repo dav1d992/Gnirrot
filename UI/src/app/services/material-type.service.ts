@@ -12,7 +12,7 @@ export class MaterialTypeService {
   baseUrl = environment.apiUrl;
   materialTypes: MaterialType[] = [];
 
-  getCategories() {
+  getMaterialTypes() {
     if (this.materialTypes.length > 0) return of(this.materialTypes);
     return this.http.get<MaterialType[]>(this.baseUrl + 'materialtypes').pipe(
       map((materialTypes) => {

@@ -1,8 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Material } from '@models/material';
 import { MaterialType } from '@models/material-type';
+import { Product } from '@models/product';
 import { MaterialTypeService } from '@services/material-type.service';
 import { MaterialService } from '@services/material.service';
+import { ProductService } from '@services/product.service';
 
 @Component({
   selector: 'app-materials',
@@ -12,7 +14,9 @@ import { MaterialService } from '@services/material.service';
 export class MaterialsComponent implements OnInit {
   private readonly materialService = inject(MaterialService);
   private readonly materialTypesService = inject(MaterialTypeService);
+  private readonly productService = inject(ProductService);
 
+  allProducts: Product[] = [];
   allMaterials: Material[] = [];
   filteredMaterials: Material[] = [];
   selectedMaterialType: MaterialType = <MaterialType>{ id: 0, name: 'All' };
@@ -20,8 +24,9 @@ export class MaterialsComponent implements OnInit {
   filterText: string = '';
 
   ngOnInit() {
+    this.loadProducts();
     this.loadMaterials();
-    this.loadCategories();
+    this.loadMaterialTypes();
   }
 
   get materialsToDisplay() {
@@ -32,17 +37,24 @@ export class MaterialsComponent implements OnInit {
       : this.allMaterials;
   }
 
-  loadMaterials() {
-    this.materialService.getMaterials().subscribe({
-      next: (materials) => {
-        this.allMaterials = materials;
-        console.log('🚀 ~ materials:', materials);
+  loadProducts() {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        this.allProducts = products;
       },
     });
   }
 
-  loadCategories() {
-    this.materialTypesService.getCategories().subscribe({
+  loadMaterials() {
+    this.materialService.getMaterials().subscribe({
+      next: (materials) => {
+        this.allMaterials = materials;
+      },
+    });
+  }
+
+  loadMaterialTypes() {
+    this.materialTypesService.getMaterialTypes().subscribe({
       next: (materialTypes) => {
         this.materialTypeOptions.push(...materialTypes);
       },
@@ -67,5 +79,18 @@ export class MaterialsComponent implements OnInit {
           material.materialType.name === materialType.name) &&
         material.name.toLowerCase().includes(this.filterText)
     );
+  }
+
+  public neededAmountOfMaterial(material: Material): number {
+    let total = 0;
+    for (const product of this.allProducts) {
+      for (const mat of product.materials) {
+        if (mat.id === material.id) {
+          total++;
+        }
+      }
+    }
+
+    return total;
   }
 }

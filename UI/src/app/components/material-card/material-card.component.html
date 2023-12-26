@@ -1,29 +1,42 @@
-<p-card
-  [style]="{ width: '30dvh' }"
-  *ngIf="material"
-  routerLink="/materials/{{ material.name }}"
->
-  <div class="image-container">
-    <div class="price">{{ material.price }}</div>
-  </div>
+<p-card [style]="{ width: '30dvh' }" *ngIf="material">
   <div class="details-container">
     <div class="h-stack-space-between">
-      <h3 class="no-margins">{{ material.name | titlecase }}</h3>
+      <h3 class="no-margin-top">{{ material.name | titlecase }}</h3>
     </div>
-    <p>{{ material.materialType.name }}</p>
+    <div class="v-stack">
+      <span>
+        Type: <b>{{ material.materialType.name }}</b>
+      </span>
+      <span>
+        In stock:
+        <b [ngClass]="{ 'text-red': material.amountInStock < 5 }">{{
+          material.amountInStock
+        }}</b>
+      </span>
+      <span>
+        Amount required for orders:
+        <b
+          [ngClass]="{
+            'text-red': material.amountInStock < amountNeededInProducts
+          }"
+          >{{ amountNeededInProducts }}</b
+        >
+      </span>
+    </div>
     <p-divider></p-divider>
     <div class="h-stack-right gap">
       <button
+        *ngIf="material.amountInStock < amountNeededInProducts"
         pButton
         type="button"
-        icon="pi pi-comments"
-        class="p-button-warning"
+        icon="pi pi-exclamation-triangle"
+        class="p-button-danger"
       ></button>
       <button
         pButton
         type="button"
-        icon="pi pi-arrow-right"
-        class="p-button-success"
+        icon="pi pi-volume-up"
+        class="p-button-secondary"
       ></button>
     </div>
   </div>

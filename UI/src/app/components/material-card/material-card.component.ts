@@ -7,5 +7,6 @@ import { Material } from '@models/material';
   styleUrls: ['./material-card.component.scss'],
 })
 export class MaterialCardComponent {
-  @Input() public material!: Material;
+  @Input() public material?: Material;
+  @Input() public amountNeededInProducts: number = 0;
 }

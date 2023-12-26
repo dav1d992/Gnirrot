@@ -11,7 +11,7 @@ public class ProductDto
     public string CategoryName { get; set; }
     public Category Category { get; set; }
     public List<PhotoDto> Photos { get; set; }
-    public List<Material> Materials { get; set; }
+    public List<MaterialDto> Materials { get; set; }
     public DateTime Created { get; set; } = DateTime.UtcNow;
     public DateTime Started { get; set; }
     public DateTime Ended { get; set; }

@@ -98,17 +98,12 @@ namespace API.Data.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("Width")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MaterialTypeId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Material");
                 });
@@ -199,6 +194,21 @@ namespace API.Data.Migrations
                     b.ToTable("Roles");
                 });
 
+            modelBuilder.Entity("MaterialProduct", b =>
+                {
+                    b.Property<int>("MaterialsId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("MaterialsId", "ProductsId");
+
+                    b.HasIndex("ProductsId");
+
+                    b.ToTable("ProductMaterials", (string)null);
+                });
+
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
                     b.HasOne("API.Entities.Role", "Role")
@@ -213,10 +223,6 @@ namespace API.Data.Migrations
                     b.HasOne("API.Entities.MaterialType", "MaterialType")
                         .WithMany()
                         .HasForeignKey("MaterialTypeId");
-
-                    b.HasOne("API.Entities.Product", null)
-                        .WithMany("Materials")
-                        .HasForeignKey("ProductId");
 
                     b.Navigation("MaterialType");
                 });
@@ -247,10 +253,23 @@ namespace API.Data.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("MaterialProduct", b =>
+                {
+                    b.HasOne("API.Entities.Material", null)
+                        .WithMany()
+                        .HasForeignKey("MaterialsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("API.Entities.Product", b =>
                 {
-                    b.Navigation("Materials");
-
                     b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618

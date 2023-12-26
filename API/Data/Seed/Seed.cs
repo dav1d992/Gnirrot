@@ -76,7 +76,8 @@ public class Seed
         foreach (var product in products)
         {
             product.Category = categories.FirstOrDefault(category => category.Name == product.Category.Name);
-            product.Materials = materials.Where(material => product.Materials.Any(pm => pm.Name == material.Name)).ToList();
+
+            product.Materials = materials.Where(material => product.Materials.Any(pm => pm.Id == material.Id)).ToList();
 
             var usersWithSpecificRole = users.Where(user => user.Role == roles[2]).ToList();
 

@@ -33,7 +33,7 @@ public class MaterialsController : BaseApiController
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<MaterialDto>> GettMaterialById(int id)
+    public async Task<ActionResult<MaterialDto>> GetMaterialById(int id)
     {
         return await _materialRepository.GetMaterialByIdAsync(id);
     }
