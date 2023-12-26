@@ -4,6 +4,16 @@
 
 :root {
   --standardFont: "Lexend", sans-serif;
+  --red: #ea4335; /* Example red color */
+  --yellow: #fbbc05; /* Example yellow color */
+  --green: #34a853; /* Example green color */
+}
+
+/* Optionally, define them for different themes (like dark mode) */
+[data-theme="dark"] {
+  --red: #db4437; /* Dark mode red */
+  --yellow: #f4b400; /* Dark mode yellow */
+  --green: #0f9d58; /* Dark mode green */
 }
 
 html,

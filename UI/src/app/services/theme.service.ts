@@ -23,21 +23,29 @@ export class ThemeService {
 
     if (this.themeLink) {
       this.themeLink.href = this.theme + '.css';
+      this.updateCssVariables();
     }
-    this.updateCssVariables();
   }
 
   private updateCssVariables() {
     if (this.isDarkMode()) {
+      // Dark mode colors
       this.document.documentElement.style.setProperty(
         '--background-color',
         'rgba(52, 62, 77)'
       );
+      this.document.documentElement.style.setProperty('--green', '#0F9D58'); // Dark mode green
+      this.document.documentElement.style.setProperty('--red', '#DB4437'); // Dark mode red
+      this.document.documentElement.style.setProperty('--yellow', '#F4B400'); // Dark mode yellow
     } else {
+      // Light mode colors
       this.document.documentElement.style.setProperty(
         '--background-color',
         'rgba(239, 239, 239)'
       );
+      this.document.documentElement.style.setProperty('--green', '#34A853'); // Light mode green
+      this.document.documentElement.style.setProperty('--red', '#EA4335'); // Light mode red
+      this.document.documentElement.style.setProperty('--yellow', '#FBBC05'); // Light mode yellow
     }
   }
 

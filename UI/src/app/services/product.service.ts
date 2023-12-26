@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from '@models/product';
+import { DateTime } from 'luxon';
 import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -14,10 +15,15 @@ export class ProductService {
 
   getProducts() {
     if (this.products.length > 0) return of(this.products);
-    return this.http.get<Product[]>(this.baseUrl + 'products').pipe(
+    return this.http.get<any[]>(this.baseUrl + 'products').pipe(
       map((products) => {
-        this.products = products;
-        return products;
+        this.products = products.map((product) => ({
+          ...product,
+          created: DateTime.fromISO(product.created),
+          started: DateTime.fromISO(product.started),
+          ended: DateTime.fromISO(product.ended),
+        }));
+        return this.products;
       })
     );
   }

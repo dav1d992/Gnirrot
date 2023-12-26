@@ -6,9 +6,14 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
+import { Product } from '@models/product';
 import { User } from '@models/user';
+import { ProductService } from '@services/product.service';
 import { UserService } from '@services/user.service';
 import Chart from 'chart.js/auto';
+import { productsToUserCount } from './helpers/productsToUserCount';
+import { processProducts } from './helpers/processProducts';
+import { getCssVariable } from 'src/app/helpers/get-css-variable.helper';
 
 @Component({
   selector: 'app-statistics',
@@ -22,11 +27,13 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   public lineChartRef: ElementRef | null = null;
 
   private readonly userService = inject(UserService);
+  private readonly productService = inject(ProductService);
 
   barChart!: Chart;
   lineChart!: Chart;
 
   users: User[] = [];
+  allProducts: Product[] = [];
 
   ngOnDestroy(): void {
     if (this.barChart) {
@@ -40,7 +47,16 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    this.loadProducts();
     this.loadUsers();
+  }
+
+  loadProducts() {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        this.allProducts = products;
+      },
+    });
   }
 
   loadUsers() {
@@ -54,25 +70,21 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   initializeBarChart() {
-    const userShortNames = this.users.map((user) =>
-      user.shortName.toUpperCase()
-    );
     const fullNames = this.users.map(
       (user) => user.firstName + ' ' + user.lastName
     );
-    const dataValues = this.users.map(
-      (user) => Math.floor(Math.random() * 100) + 1
-    );
+
+    const result = productsToUserCount(this.allProducts, this.users);
 
     if (this.barChartRef)
       this.barChart = new Chart(this.barChartRef.nativeElement, {
         type: 'bar',
         data: {
-          labels: userShortNames,
+          labels: result.map((name) => name.userShortName.toLocaleUpperCase()),
           datasets: [
             {
-              label: 'Some value',
-              data: dataValues,
+              label: 'Product orders done',
+              data: result.map((name) => name.noOfProducts),
               borderWidth: 1,
             },
           ],
@@ -99,41 +111,34 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   initializeLineChart() {
-    const labels = this.users.map((user) => user.shortName.toUpperCase());
-    const fullNames = this.users.map(
-      (user) => user.firstName + ' ' + user.lastName
-    );
-    const dataValues = this.users.map(
-      (user, index) => Math.floor(Math.random() * 100) + 1
-    );
+    const result = processProducts(this.allProducts);
 
     if (this.lineChartRef)
       this.lineChart = new Chart(this.lineChartRef.nativeElement, {
-        type: 'line',
+        type: 'bar',
         data: {
-          labels: labels,
+          labels: result.map((x) => x.monthCreated),
           datasets: [
             {
-              label: 'Some value',
-              data: dataValues,
-              fill: false,
-              borderColor: 'rgb(75, 192, 192)',
-              tension: 0.1,
+              label: 'Created',
+              data: result.map((x) => x.amountCreated),
+              backgroundColor: getCssVariable('--red'),
+            },
+            {
+              label: 'Started',
+              data: result.map((x) => x.amountStarted),
+              backgroundColor: getCssVariable('--yellow'),
+            },
+            {
+              label: 'Ended',
+              data: result.map((x) => x.amountEnded),
+              backgroundColor: getCssVariable('--green'),
             },
           ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: {
-            tooltip: {
-              callbacks: {
-                title: function (tooltipItems) {
-                  return fullNames[tooltipItems[0].dataIndex];
-                },
-              },
-            },
-          },
         },
       });
   }
