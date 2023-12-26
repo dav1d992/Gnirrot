@@ -26,10 +26,10 @@ public class MaterialsController : BaseApiController
         return Ok(materials);
     }
 
-    [HttpGet("name/{productName}")]
-    public async Task<ActionResult<MaterialDto>> GetMaterialByName(string productName)
+    [HttpGet("name/{materialName}")]
+    public async Task<ActionResult<MaterialDto>> GetMaterialByName(string materialName)
     {
-        return await _materialRepository.GetMaterialByNameAsync(productName);
+        return await _materialRepository.GetMaterialByNameAsync(materialName);
     }
 
     [HttpGet("{id}")]

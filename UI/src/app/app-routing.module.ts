@@ -9,6 +9,7 @@ import { ProfileComponent } from '@pages/profile/profile.component';
 import { ProductDetailsComponent } from '@pages/product-details/product-details.component';
 import { ProductsComponent } from '@pages/products/products.component';
 import { StatisticsComponent } from '@pages/statistics/statistics.component';
+import { MaterialsComponent } from '@pages/materials/materials.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'messages', component: EmployeesComponent },
       { path: 'statistics', component: StatisticsComponent },
+      { path: 'materials', component: MaterialsComponent },
     ],
   },
   {

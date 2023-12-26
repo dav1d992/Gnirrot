@@ -1,0 +1,30 @@
+<p-card
+  [style]="{ width: '30dvh' }"
+  *ngIf="material"
+  routerLink="/materials/{{ material.name }}"
+>
+  <div class="image-container">
+    <div class="price">{{ material.price }}</div>
+  </div>
+  <div class="details-container">
+    <div class="h-stack-space-between">
+      <h3 class="no-margins">{{ material.name | titlecase }}</h3>
+    </div>
+    <p>{{ material.materialType.name }}</p>
+    <p-divider></p-divider>
+    <div class="h-stack-right gap">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-comments"
+        class="p-button-warning"
+      ></button>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-arrow-right"
+        class="p-button-success"
+      ></button>
+    </div>
+  </div>
+</p-card>

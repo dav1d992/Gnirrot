@@ -38,7 +38,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from '@store/user/user.effect';
 import { userFeature } from '@store/user';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
+import { MaterialsComponent } from '@pages/materials/materials.component';
+import { MaterialCardComponent } from '@components/material-card/material-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,8 @@ import { environment } from 'src/environments/environment';
     ProductCardComponent,
     StatisticsComponent,
     TimeAgoPipe,
+    MaterialsComponent,
+    MaterialCardComponent,
   ],
   imports: [
     BrowserModule,

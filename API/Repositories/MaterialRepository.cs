@@ -19,7 +19,7 @@ public class MaterialRepository : IMaterialRepository
 
     public async Task<MaterialDto> GetMaterialByNameAsync(string name)
     {
-        return await _context.Products
+        return await _context.Materials
             .Where(x => x.Name == name)
             .ProjectTo<MaterialDto>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
@@ -27,7 +27,7 @@ public class MaterialRepository : IMaterialRepository
 
     public async Task<MaterialDto> GetMaterialByIdAsync(int id)
     {
-        return await _context.Products
+        return await _context.Materials
             .Where(x => x.Id == id)
             .ProjectTo<MaterialDto>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
@@ -35,7 +35,7 @@ public class MaterialRepository : IMaterialRepository
 
     public async Task<IEnumerable<MaterialDto>> GetMaterialsAsync()
     {
-        return await _context.Products
+        return await _context.Materials
             .ProjectTo<MaterialDto>(_mapper.ConfigurationProvider)
             .ToListAsync();
     }
