@@ -14,7 +14,7 @@ export function processProducts(products: Product[]): {
   products.forEach((product) => {
     const monthCreated = product.created.toFormat('LLL').toUpperCase();
     const monthStarted = product.started.toFormat('LLL').toUpperCase();
-    const monthEnded = product.ended.toFormat('LLL').toUpperCase();
+    const monthEnded = product?.ended?.toFormat('LLL').toUpperCase();
 
     if (!monthStats.has(monthCreated)) {
       monthStats.set(monthCreated, {
@@ -30,7 +30,7 @@ export function processProducts(products: Product[]): {
         amountStarted: 0,
       });
     }
-    if (!monthStats.has(monthEnded)) {
+    if (monthEnded && !monthStats.has(monthEnded)) {
       monthStats.set(monthEnded, {
         amountCreated: 0,
         amountEnded: 0,
@@ -40,7 +40,7 @@ export function processProducts(products: Product[]): {
 
     monthStats.get(monthCreated)!.amountCreated++;
     monthStats.get(monthStarted)!.amountStarted++;
-    monthStats.get(monthEnded)!.amountEnded++;
+    if (monthEnded) monthStats.get(monthEnded)!.amountEnded++;
   });
 
   const result = Array.from(monthStats, ([month, counts]) => ({

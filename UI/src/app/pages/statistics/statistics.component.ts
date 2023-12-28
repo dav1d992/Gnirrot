@@ -74,7 +74,6 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  // Method to go to the next month
   goToNextMonth() {
     this.selectedDate = new Date(
       this.selectedDate.getFullYear(),
@@ -87,7 +86,6 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
     );
   }
 
-  // Method to go to the previous month
   goToPreviousMonth() {
     this.selectedDate = new Date(
       this.selectedDate.getFullYear(),
@@ -111,7 +109,6 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   initializeBarChart(month: number, year: number) {
-    console.log('🚀 ~ month-year:', month, year);
     if (this.barChart) {
       this.barChart.destroy(); // Necessary for redrawing
     }

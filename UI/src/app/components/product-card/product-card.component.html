@@ -18,16 +18,17 @@
     <p-divider></p-divider>
     <div class="h-stack-right gap">
       <button
+        *ngIf="product.ended"
         pButton
         type="button"
-        icon="pi pi-comments"
-        class="p-button-warning"
+        icon="pi pi-check"
+        class="p-button-success"
       ></button>
       <button
         pButton
         type="button"
         icon="pi pi-arrow-right"
-        class="p-button-success"
+        class="p-button-warning"
       ></button>
     </div>
   </div>

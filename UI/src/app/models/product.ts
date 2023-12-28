@@ -15,6 +15,6 @@ export interface Product {
   materials: Material[];
   created: DateTime;
   started: DateTime;
-  ended: DateTime;
+  ended?: DateTime;
   employee: User;
 }

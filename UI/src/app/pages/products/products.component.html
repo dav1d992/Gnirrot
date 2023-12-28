@@ -10,7 +10,14 @@
     [(ngModel)]="selectedCategory"
     optionLabel="name"
     placeholder="Select a Category"
-    (onChange)="filterProductsByCategory($event.value)"
+    (onChange)="filterProducts()"
+  ></p-dropdown>
+  <p-dropdown
+    [options]="statusOptions"
+    [(ngModel)]="selectedStatus"
+    optionLabel="label"
+    placeholder="Select a Status"
+    (onChange)="filterProducts()"
   ></p-dropdown>
 </div>
 <div class="h-stack-center gap-x2 w-100">
