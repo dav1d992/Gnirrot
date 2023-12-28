@@ -14,6 +14,7 @@ import Chart from 'chart.js/auto';
 import { productsToUserCount } from './helpers/productsToUserCount';
 import { processProducts } from './helpers/processProducts';
 import { getCssVariable } from 'src/app/helpers/get-css-variable.helper';
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'app-statistics',
@@ -33,6 +34,7 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   lineChart!: Chart;
 
   users: User[] = [];
+  selectedDate: Date = new Date();
   allProducts: Product[] = [];
 
   ngOnDestroy(): void {
@@ -63,18 +65,66 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
     this.userService.getUsers().subscribe({
       next: (users) => {
         this.users = users;
-        this.initializeBarChart();
+        this.initializeBarChart(
+          this.selectedDate.getMonth() + 1, // Translates into luxon DateTime which goes from 1 to 12 instead of 0 to 11
+          this.selectedDate.getFullYear()
+        );
         this.initializeLineChart();
       },
     });
   }
 
-  initializeBarChart() {
+  // Method to go to the next month
+  goToNextMonth() {
+    this.selectedDate = new Date(
+      this.selectedDate.getFullYear(),
+      this.selectedDate.getMonth() + 1,
+      1
+    );
+    this.initializeBarChart(
+      this.selectedDate.getMonth() + 1,
+      this.selectedDate.getFullYear()
+    );
+  }
+
+  // Method to go to the previous month
+  goToPreviousMonth() {
+    this.selectedDate = new Date(
+      this.selectedDate.getFullYear(),
+      this.selectedDate.getMonth() - 1,
+      1
+    );
+    this.initializeBarChart(
+      this.selectedDate.getMonth() + 1,
+      this.selectedDate.getFullYear()
+    );
+  }
+
+  filterProductsByMonth(
+    products: Product[],
+    month: number,
+    year: number
+  ): Product[] {
+    return products.filter((product) => {
+      return product.created.month === month && product.created.year === year;
+    });
+  }
+
+  initializeBarChart(month: number, year: number) {
+    console.log('🚀 ~ month-year:', month, year);
+    if (this.barChart) {
+      this.barChart.destroy(); // Necessary for redrawing
+    }
     const fullNames = this.users.map(
       (user) => user.firstName + ' ' + user.lastName
     );
+    const filteredProducts = this.filterProductsByMonth(
+      this.allProducts,
+      month,
+      year
+    );
 
-    const result = productsToUserCount(this.allProducts, this.users);
+    const result = productsToUserCount(filteredProducts, this.users);
 
     if (this.barChartRef)
       this.barChart = new Chart(this.barChartRef.nativeElement, {

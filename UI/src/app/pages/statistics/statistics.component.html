@@ -1,7 +1,38 @@
-<div class="h-stack-center" style="height: 40vh">
-  <canvas #barChart></canvas>
-</div>
+<div class="v-stack gap-x8">
+  <div class="v-stack gap">
+    <div class="h-stack-center gap">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-arrow-left"
+        (click)="goToPreviousMonth()"
+      ></button>
+      <p-calendar
+        [(ngModel)]="selectedDate"
+        (ngModelChange)="
+          initializeBarChart(
+            selectedDate.getMonth() + 1,
+            selectedDate.getFullYear()
+          )
+        "
+        view="month"
+        dateFormat="mm/yy"
+        [yearNavigator]="true"
+        yearRange="2010:2030"
+      ></p-calendar>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-arrow-right"
+        (click)="goToNextMonth()"
+      ></button>
+    </div>
+    <div class="chart-container" style="height: 40vh">
+      <canvas #barChart></canvas>
+    </div>
+  </div>
 
-<div class="h-stack-center" style="height: 40vh">
-  <canvas #lineChart></canvas>
+  <div class="chart-container" style="height: 40vh">
+    <canvas #lineChart></canvas>
+  </div>
 </div>

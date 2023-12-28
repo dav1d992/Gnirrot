@@ -29,6 +29,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { GalleriaModule } from 'primeng/galleria';
 import { ProfileComponent } from '@pages/profile/profile.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CalendarModule } from 'primeng/calendar';
 import { ProductDetailsComponent } from '@pages/product-details/product-details.component';
 import { ProductsComponent } from '@pages/products/products.component';
 import { ProductCardComponent } from '@components/product-card/product-card.component';
@@ -77,6 +78,7 @@ import { MaterialCardComponent } from '@components/material-card/material-card.c
     TabViewModule,
     GalleriaModule,
     InputTextareaModule,
+    CalendarModule,
     EffectsModule.forRoot([UserEffects]),
     StoreModule.forRoot({}),
     StoreModule.forFeature(userFeature),

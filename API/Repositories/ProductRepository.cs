@@ -20,6 +20,9 @@ public class ProductRepository : IProductRepository
     public async Task<ProductDto> GetProductByNameAsync(string name)
     {
         return await _context.Products
+            .Include(p => p.Category)
+            .Include(p => p.Photos)
+            .Include(p => p.Employee)
             .Include(p => p.Materials)
             .Where(x => x.Name == name)
             .ProjectTo<ProductDto>(_mapper.ConfigurationProvider)
@@ -29,6 +32,9 @@ public class ProductRepository : IProductRepository
     public async Task<ProductDto> GetProductByIdAsync(int id)
     {
         return await _context.Products
+            .Include(p => p.Category)
+            .Include(p => p.Photos)
+            .Include(p => p.Employee)
             .Include(p => p.Materials)
             .Where(x => x.Id == id)
             .ProjectTo<ProductDto>(_mapper.ConfigurationProvider)
@@ -38,6 +44,9 @@ public class ProductRepository : IProductRepository
     public async Task<IEnumerable<ProductDto>> GetProductsAsync()
     {
         var products = await _context.Products
+            .Include(p => p.Category)
+            .Include(p => p.Photos)
+            .Include(p => p.Employee)
             .Include(p => p.Materials)
             .ToListAsync();
 
