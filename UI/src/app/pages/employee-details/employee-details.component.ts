@@ -1,10 +1,5 @@
-import { Component, computed, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, computed, effect, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Photo } from '@models/photo';
 import { Store } from '@ngrx/store';
@@ -23,17 +18,63 @@ export class EmployeeDetailsComponent {
 
   constructor() {
     this.userDetailsForm = new FormGroup({
-      id: new FormControl(null, Validators.required),
-      shortName: new FormControl('', Validators.required),
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      photoUrl: new FormControl('', Validators.required),
-      joined: new FormControl(null, Validators.required),
-      dateOfBirth: new FormControl(null, Validators.required),
-      workplace: new FormControl('', Validators.required),
-      role: new FormControl('', Validators.required),
+      shortName: new FormControl(
+        this.employee()?.shortName,
+        Validators.required
+      ),
+      firstName: new FormControl(
+        this.employee()?.firstName,
+        Validators.required
+      ),
+      lastName: new FormControl(this.employee()?.lastName, Validators.required),
+      photoUrl: new FormControl(this.employee()?.photoUrl, Validators.required),
+      joined: new FormControl(this.employee()?.joined, Validators.required),
+      dateOfBirth: new FormControl(
+        this.employee()?.dateOfBirth,
+        Validators.required
+      ),
+      workplace: new FormControl(
+        this.employee()?.workplace,
+        Validators.required
+      ),
+    });
+
+    effect(() => {
+      if (this.employee()) {
+        this.userDetailsForm = new FormGroup({
+          shortName: new FormControl(
+            this.employee()!.shortName,
+            Validators.required
+          ),
+          firstName: new FormControl(
+            this.employee()!.firstName,
+            Validators.required
+          ),
+          lastName: new FormControl(
+            this.employee()!.lastName,
+            Validators.required
+          ),
+          photoUrl: new FormControl(
+            this.employee()!.photoUrl,
+            Validators.required
+          ),
+          joined: new FormControl(
+            new Date(this.employee()!.joined),
+            Validators.required
+          ),
+          dateOfBirth: new FormControl(
+            new Date(this.employee()!.dateOfBirth),
+            Validators.required
+          ),
+          workplace: new FormControl(
+            this.employee()!.workplace,
+            Validators.required
+          ),
+        });
+      }
     });
   }
+
   public responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -58,6 +99,6 @@ export class EmployeeDetailsComponent {
   });
 
   onSubmit() {
-    console.log('Form Data: ', this.userDetailsForm.value);
+    console.log('Employee Data: ', this.employee);
   }
 }
