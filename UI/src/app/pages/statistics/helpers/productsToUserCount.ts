@@ -9,7 +9,7 @@ export function productsToUserCount(
 
   // Initialize all users with a count of 0
   totalUsers.forEach((user) => {
-    userProductCountMap.set(user.shortName, 0);
+    userProductCountMap.set(user?.shortName, 0);
   });
 
   // Increment counts for users with associated products

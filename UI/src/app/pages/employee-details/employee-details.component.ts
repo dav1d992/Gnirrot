@@ -1,8 +1,18 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  WritableSignal,
+  computed,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Photo } from '@models/photo';
 import { Store } from '@ngrx/store';
+import { selectAllProducts } from '@store/product/product.selectors';
 import { selectAllUsers } from '@store/user/user.selectors';
 
 @Component({
@@ -13,8 +23,50 @@ import { selectAllUsers } from '@store/user/user.selectors';
 export class EmployeeDetailsComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly store = inject(Store);
+
   private storeUsers = this.store.selectSignal(selectAllUsers);
-  userDetailsForm: FormGroup;
+  private storeProducts = this.store.selectSignal(selectAllProducts);
+
+  public userDetailsForm: FormGroup;
+
+  public employee = computed(() => {
+    const username = this.route.snapshot.paramMap.get('username');
+    if (!username) return;
+
+    return this.storeUsers().find((user) => user.shortName === username);
+  });
+
+  public performances = computed(() => {
+    if (!this.employee() && this.storeProducts().length > 0) return;
+
+    const relevantProducts = this.storeProducts().filter(
+      (p) => p.employee.id === this.employee()!.id && p.ended != null
+    );
+
+    // Define the type for the accumulator
+    interface MonthCount {
+      [key: string]: number;
+    }
+
+    // Group products by their ending month and count them
+    const groupByMonth = relevantProducts.reduce<MonthCount>((acc, product) => {
+      const month = product.ended!.getMonth();
+      const year = product.ended!.getFullYear();
+      const monthYearKey = `${year}-${month + 1}`;
+
+      acc[monthYearKey] = (acc[monthYearKey] || 0) + 1;
+
+      return acc;
+    }, {});
+
+    // Convert the grouped data to the desired array format
+    const finalResult = Object.keys(groupByMonth).map((monthYearKey) => ({
+      month: monthYearKey,
+      ordersEnded: groupByMonth[monthYearKey],
+    }));
+
+    return finalResult;
+  });
 
   constructor() {
     this.userDetailsForm = new FormGroup({
@@ -91,14 +143,7 @@ export class EmployeeDetailsComponent {
   ];
   images: Photo[] = [];
 
-  public employee = computed(() => {
-    const username = this.route.snapshot.paramMap.get('username');
-    if (!username) return;
-
-    return this.storeUsers().find((user) => user.shortName === username);
-  });
-
-  onSubmit() {
+  public onSubmit() {
     console.log('Employee Data: ', this.employee);
   }
 }

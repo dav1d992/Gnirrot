@@ -17,6 +17,7 @@ import { getCssVariable } from 'src/app/helpers/get-css-variable.helper';
 import { Store } from '@ngrx/store';
 import { selectAllUsers } from '@store/user/user.selectors';
 import { selectAllProducts } from '@store/product/product.selectors';
+import { filterProductsByMonth } from './helpers/filterProductsByMonth';
 
 @Component({
   selector: 'app-statistics',
@@ -92,19 +93,6 @@ export class StatisticsComponent implements OnDestroy {
     this.initializeBarChart(date.getMonth(), date.getFullYear());
   }
 
-  filterProductsByMonth(
-    products: Product[],
-    month: number,
-    year: number
-  ): Product[] {
-    return products.filter((product) => {
-      return (
-        product.created.getMonth() === month &&
-        product.created.getFullYear() === year
-      );
-    });
-  }
-
   initializeBarChart(month: number, year: number) {
     if (this.barChart) {
       this.barChart.destroy(); // Necessary for redrawing
@@ -112,7 +100,7 @@ export class StatisticsComponent implements OnDestroy {
     const fullNames = this.users.map(
       (user) => user.firstName + ' ' + user.lastName
     );
-    const filteredProducts = this.filterProductsByMonth(
+    const filteredProducts = filterProductsByMonth(
       this.allProducts,
       month,
       year
