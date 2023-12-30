@@ -12,9 +12,15 @@ export function processProducts(products: Product[]): {
   >();
 
   products.forEach((product) => {
-    const monthCreated = product.created.toFormat('LLL').toUpperCase();
-    const monthStarted = product.started.toFormat('LLL').toUpperCase();
-    const monthEnded = product?.ended?.toFormat('LLL').toUpperCase();
+    const monthCreated = product.created
+      .toLocaleString('default', { month: 'short' })
+      .toUpperCase();
+    const monthStarted = product.started
+      .toLocaleString('default', { month: 'short' })
+      .toUpperCase();
+    const monthEnded = product?.ended
+      ?.toLocaleString('default', { month: 'short' })
+      .toUpperCase();
 
     if (!monthStats.has(monthCreated)) {
       monthStats.set(monthCreated, {

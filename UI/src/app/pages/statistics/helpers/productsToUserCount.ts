@@ -14,7 +14,6 @@ export function productsToUserCount(
 
   // Increment counts for users with associated products
   products.forEach((product) => {
-    console.log(product);
     const shortName = product.employee.shortName;
     userProductCountMap.set(shortName, userProductCountMap.get(shortName)! + 1);
   });

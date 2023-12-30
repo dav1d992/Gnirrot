@@ -9,12 +9,11 @@ export interface Product {
   name: string;
   photoUrl: string;
   price: number;
-  amountInStock: number;
   category: Category;
   photos: Photo[];
   materials: Material[];
-  created: DateTime;
-  started: DateTime;
-  ended?: DateTime;
+  created: Date;
+  started: Date;
+  ended?: Date;
   employee: User;
 }

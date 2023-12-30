@@ -1,41 +1,69 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   OnDestroy,
   ViewChild,
+  WritableSignal,
+  effect,
   inject,
+  signal,
 } from '@angular/core';
 import { Product } from '@models/product';
 import { User } from '@models/user';
-import { ProductService } from '@services/product.service';
-import { UserService } from '@services/user.service';
 import Chart from 'chart.js/auto';
 import { productsToUserCount } from './helpers/productsToUserCount';
 import { processProducts } from './helpers/processProducts';
 import { getCssVariable } from 'src/app/helpers/get-css-variable.helper';
-import { DateTime } from 'luxon';
+import { Store } from '@ngrx/store';
+import { selectAllUsers } from '@store/user/user.selectors';
+import { selectAllProducts } from '@store/product/product.selectors';
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss'],
 })
-export class StatisticsComponent implements AfterViewInit, OnDestroy {
+export class StatisticsComponent implements OnDestroy {
   @ViewChild('barChart', { read: ElementRef, static: false })
   public barChartRef: ElementRef | null = null;
   @ViewChild('lineChart', { read: ElementRef, static: false })
   public lineChartRef: ElementRef | null = null;
 
-  private readonly userService = inject(UserService);
-  private readonly productService = inject(ProductService);
+  private readonly store = inject(Store);
 
-  barChart!: Chart;
-  lineChart!: Chart;
+  public barChart!: Chart;
+  public lineChart!: Chart;
 
-  users: User[] = [];
-  selectedDate: Date = new Date();
-  allProducts: Product[] = [];
+  public users: User[] = [];
+  public selectedDateSignal: WritableSignal<Date> = signal(new Date());
+  public allProducts: Product[] = [];
+  private storeUsers = this.store.selectSignal(selectAllUsers);
+  private storeProducts = this.store.selectSignal(selectAllProducts);
+  public selectedDate: Date = new Date();
+
+  constructor() {
+    effect(
+      () => {
+        this.users = this.storeUsers();
+        this.allProducts = this.storeProducts();
+        this.selectedDate = this.selectedDateSignal();
+
+        this.initializeBarChart(
+          this.selectedDate.getMonth(),
+          this.selectedDate.getFullYear()
+        );
+      },
+      { allowSignalWrites: true }
+    );
+
+    effect(
+      () => {
+        this.allProducts = this.storeProducts();
+        this.initializeLineChart();
+      },
+      { allowSignalWrites: true }
+    );
+  }
 
   ngOnDestroy(): void {
     if (this.barChart) {
@@ -48,54 +76,20 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
     this.lineChartRef = null;
   }
 
-  ngAfterViewInit(): void {
-    this.loadProducts();
-    this.loadUsers();
-  }
-
-  loadProducts() {
-    this.productService.getProducts().subscribe({
-      next: (products) => {
-        this.allProducts = products;
-      },
-    });
-  }
-
-  loadUsers() {
-    this.userService.getUsers().subscribe({
-      next: (users) => {
-        this.users = users;
-        this.initializeBarChart(
-          this.selectedDate.getMonth() + 1, // Translates into luxon DateTime which goes from 1 to 12 instead of 0 to 11
-          this.selectedDate.getFullYear()
-        );
-        this.initializeLineChart();
-      },
-    });
-  }
-
   goToNextMonth() {
-    this.selectedDate = new Date(
-      this.selectedDate.getFullYear(),
-      this.selectedDate.getMonth() + 1,
-      1
+    const date = this.selectedDateSignal();
+    this.selectedDateSignal.set(
+      new Date(date.getFullYear(), date.getMonth() + 1, 1)
     );
-    this.initializeBarChart(
-      this.selectedDate.getMonth() + 1,
-      this.selectedDate.getFullYear()
-    );
+    this.initializeBarChart(date.getMonth(), date.getFullYear());
   }
 
   goToPreviousMonth() {
-    this.selectedDate = new Date(
-      this.selectedDate.getFullYear(),
-      this.selectedDate.getMonth() - 1,
-      1
+    const date = this.selectedDateSignal();
+    this.selectedDateSignal.set(
+      new Date(date.getFullYear(), date.getMonth() - 1, 1)
     );
-    this.initializeBarChart(
-      this.selectedDate.getMonth() + 1,
-      this.selectedDate.getFullYear()
-    );
+    this.initializeBarChart(date.getMonth(), date.getFullYear());
   }
 
   filterProductsByMonth(
@@ -104,7 +98,10 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
     year: number
   ): Product[] {
     return products.filter((product) => {
-      return product.created.month === month && product.created.year === year;
+      return (
+        product.created.getMonth() === month &&
+        product.created.getFullYear() === year
+      );
     });
   }
 
@@ -158,6 +155,9 @@ export class StatisticsComponent implements AfterViewInit, OnDestroy {
   }
 
   initializeLineChart() {
+    if (this.lineChart) {
+      this.lineChart.destroy(); // Necessary for redrawing
+    }
     const result = processProducts(this.allProducts);
 
     if (this.lineChartRef)

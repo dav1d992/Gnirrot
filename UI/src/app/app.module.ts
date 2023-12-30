@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { NavComponent } from './components/nav/nav.component';
 import { MenubarModule } from 'primeng/menubar';
 import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
@@ -41,6 +42,8 @@ import { userFeature } from '@store/user';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MaterialsComponent } from '@pages/materials/materials.component';
 import { MaterialCardComponent } from '@components/material-card/material-card.component';
+import { ProductEffects } from '@store/product/product.effect';
+import { productFeature } from '@store/product';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,9 +82,11 @@ import { MaterialCardComponent } from '@components/material-card/material-card.c
     GalleriaModule,
     InputTextareaModule,
     CalendarModule,
-    EffectsModule.forRoot([UserEffects]),
+    TableModule,
+    EffectsModule.forRoot([UserEffects, ProductEffects]),
     StoreModule.forRoot({}),
     StoreModule.forFeature(userFeature),
+    StoreModule.forFeature(productFeature),
     StoreDevtoolsModule.instrument({
       maxAge: 500,
     }),

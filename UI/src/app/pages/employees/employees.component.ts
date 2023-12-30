@@ -13,11 +13,9 @@ export class EmployeesComponent {
   private readonly store = inject(Store);
 
   private storeUsers = this.store.selectSignal(selectAllUsers);
-  employees: User[] = [];
+  public employees: User[] = [];
 
   constructor() {
-    this.store.dispatch(userActions.getUsers());
-
     effect(() => {
       this.employees = this.storeUsers();
     });

@@ -39,6 +39,9 @@ export class ProductDetailsComponent implements OnInit {
     const imageUrls = [];
     for (const photo of this.product.photos) {
       imageUrls.push(photo);
+      imageUrls.push(photo);
+      imageUrls.push(photo);
+      imageUrls.push(photo);
     }
     return imageUrls;
   }

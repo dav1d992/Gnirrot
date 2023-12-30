@@ -3,6 +3,7 @@ import { AccountService } from './services/account.service';
 import { Account } from './models/account';
 import { userActions } from '@store/user';
 import { Store } from '@ngrx/store';
+import { productActions } from '@store/product';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   title = 'UI';
 
   ngOnInit(): void {
-    // this.store.dispatch(userActions.getUsers());
+    this.store.dispatch(userActions.getUsers());
+    this.store.dispatch(productActions.getProducts());
 
     this.setCurrentUser();
   }

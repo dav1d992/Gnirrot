@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from '@models/product';
-import { DateTime } from 'luxon';
 import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -19,9 +18,9 @@ export class ProductService {
       map((products) => {
         this.products = products.map((product) => ({
           ...product,
-          created: DateTime.fromISO(product.created),
-          started: DateTime.fromISO(product.started),
-          ended: DateTime.fromISO(product.ended),
+          created: new Date(product.created),
+          started: new Date(product.started),
+          ended: new Date(product.ended),
         }));
         return this.products;
       })

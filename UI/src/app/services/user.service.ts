@@ -17,8 +17,10 @@ export class UserService {
     if (this.users.length > 0) return of(this.users);
     return this.http.get<User[]>(this.baseUrl + 'users').pipe(
       map((users) => {
-        this.users = users;
-        return users;
+        this.users = users.map((user) => ({
+          ...user,
+        }));
+        return this.users;
       })
     );
   }
