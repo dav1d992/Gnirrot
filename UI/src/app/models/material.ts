@@ -8,5 +8,6 @@ export interface Material {
   width: number;
   height: number;
   length: number;
+  materialTypeName: string;
   materialType: MaterialType;
 }

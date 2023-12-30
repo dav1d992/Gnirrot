@@ -9,10 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductService {
   private readonly http = inject(HttpClient);
-  baseUrl = environment.apiUrl;
-  products: Product[] = [];
+  private readonly baseUrl = environment.apiUrl;
+  private products: Product[] = [];
 
-  getProducts() {
+  public getProducts() {
     if (this.products.length > 0) return of(this.products);
     return this.http.get<any[]>(this.baseUrl + 'products').pipe(
       map((products) => {
@@ -27,13 +27,13 @@ export class ProductService {
     );
   }
 
-  getProduct(id: number) {
+  public getProduct(id: number) {
     const product = this.products.find((x) => x.id === id);
     if (product) return of(product);
     return this.http.get<Product>(this.baseUrl + 'products/' + id);
   }
 
-  updateProduct(product: Product) {
+  public updateProduct(product: Product) {
     return this.http.put(this.baseUrl + 'products', product).pipe(
       map(() => {
         const index = this.products.indexOf(product);

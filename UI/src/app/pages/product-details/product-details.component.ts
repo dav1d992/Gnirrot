@@ -1,19 +1,22 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Photo } from '@models/photo';
 import { Product } from '@models/product';
+import { Store } from '@ngrx/store';
 import { ProductService } from '@services/product.service';
+import { selectAllProducts } from '@store/product/product.selectors';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'],
 })
-export class ProductDetailsComponent implements OnInit {
-  private readonly productService = inject(ProductService);
+export class ProductDetailsComponent {
   private readonly route = inject(ActivatedRoute);
+  private readonly store = inject(Store);
 
-  product: Product | undefined;
+  private storeProducts = this.store.selectSignal(selectAllProducts);
+
   responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -28,32 +31,21 @@ export class ProductDetailsComponent implements OnInit {
       numVisible: 1,
     },
   ];
-  images: Photo[] = [];
 
-  ngOnInit(): void {
-    this.loadProduct();
-  }
+  public product = computed(() => {
+    const id = this.route.snapshot.paramMap.get('id');
+    return this.storeProducts().find((product) => product.id.toString() === id);
+  });
 
-  getImages() {
-    if (!this.product) return [];
+  public images = computed(() => {
+    if (this.product() === undefined) return [];
     const imageUrls = [];
-    for (const photo of this.product.photos) {
+    for (const photo of this.product()!.photos) {
       imageUrls.push(photo);
       imageUrls.push(photo);
       imageUrls.push(photo);
       imageUrls.push(photo);
     }
     return imageUrls;
-  }
-
-  loadProduct() {
-    var id = this.route.snapshot.paramMap.get('id');
-    if (!id) return;
-    this.productService.getProduct(Number(id)).subscribe({
-      next: (product) => {
-        this.product = product;
-        this.images = this.getImages();
-      },
-    });
-  }
+  });
 }

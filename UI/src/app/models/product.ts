@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon';
 import { Category } from './category';
 import { Material } from './material';
 import { Photo } from './photo';
@@ -13,7 +12,7 @@ export interface Product {
   photos: Photo[];
   materials: Material[];
   created: Date;
-  started: Date;
+  started?: Date;
   ended?: Date;
   employee: User;
 }

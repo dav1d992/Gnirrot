@@ -9,10 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class MaterialService {
   private readonly http = inject(HttpClient);
-  baseUrl = environment.apiUrl;
-  materials: Material[] = [];
+  private readonly baseUrl = environment.apiUrl;
+  private materials: Material[] = [];
 
-  getMaterials() {
+  public getMaterials() {
     if (this.materials.length > 0) return of(this.materials);
     return this.http.get<Material[]>(this.baseUrl + 'materials').pipe(
       map((materials) => {
@@ -22,13 +22,13 @@ export class MaterialService {
     );
   }
 
-  getMaterial(id: number) {
+  public getMaterial(id: number) {
     const material = this.materials.find((material) => material.id === id);
     if (material) return of(material);
     return this.http.get<Material>(this.baseUrl + 'materials/' + id);
   }
 
-  updateMaterial(material: Material) {
+  public updateMaterial(material: Material) {
     return this.http.put(this.baseUrl + 'materials', material).pipe(
       map(() => {
         const index = this.materials.indexOf(material);

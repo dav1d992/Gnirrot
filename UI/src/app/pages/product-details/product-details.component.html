@@ -1,56 +1,56 @@
 <div class="h-stack gap">
   <p-card
-    header="{{ product?.name }}"
-    subheader="{{ product?.category?.name | titlecase }}"
+    header="{{ product()?.name }}"
+    subheader="{{ product()?.category?.name | titlecase }}"
     [style]="{ width: '30dvh' }"
   >
     <ng-template pTemplate="header">
       <div class="img-container">
         <img
-          src="{{ product?.photoUrl || './assets/user.png' }}"
-          alt="{{ product?.id }}"
+          src="{{ product()?.photoUrl || './assets/user.png' }}"
+          alt="{{ product()?.id }}"
           class="user-profile-picture"
         />
       </div>
     </ng-template>
     <div class="info-container">
       <h4 class="margin-bot-only">Created:</h4>
-      <p class="no-margins">{{ product?.created | date : "dd-MM-yyyy" }}</p>
+      <p class="no-margins">{{ product()?.created | date : "dd-MM-yyyy" }}</p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Started:</h4>
       <p class="no-margins">
-        {{ product?.started | date : "dd-MM-yyyy" }}
+        {{ product()?.started | date : "dd-MM-yyyy" }}
       </p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Ended:</h4>
       <p class="no-margins">
-        {{ product?.ended | date : "dd-MM-yyyy" }}
+        {{ product()?.ended | date : "dd-MM-yyyy" }}
       </p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Price:</h4>
       <p class="no-margins">
-        {{ product?.price }}
+        {{ product()?.price }}
       </p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Employee:</h4>
-      <p class="no-margins">{{ product?.employee?.shortName | uppercase }}</p>
+      <p class="no-margins">{{ product()?.employee?.shortName | uppercase }}</p>
     </div>
   </p-card>
   <p-tabView>
     <p-tabPanel header="Materials">
       <div class="info-container">
-        <h3 class="margin-bot-only">Material list for {{ product?.name }}</h3>
+        <h3 class="margin-bot-only">Material list for {{ product()?.name }}</h3>
         <p-table
-          *ngIf="product"
-          [value]="product.materials"
+          *ngIf="product()"
+          [value]="product()!.materials"
           [tableStyle]="{ 'min-width': '50rem' }"
         >
           <ng-template pTemplate="header">
@@ -65,7 +65,7 @@
           <ng-template pTemplate="body" let-material>
             <tr>
               <td>{{ material.name }}</td>
-              <td>{{ material.materialType?.name }}</td>
+              <td>{{ material.materialTypeName }}</td>
               <td>
                 {{ material.width }} x {{ material.height }} x
                 {{ material.length }}
@@ -81,7 +81,7 @@
       <h3 class="margin-bot-only">Photos submitted by buyer</h3>
 
       <p-galleria
-        [value]="images"
+        [value]="images()"
         [responsiveOptions]="responsiveOptions"
         [containerStyle]="{ 'max-width': '640px' }"
         [numVisible]="5"

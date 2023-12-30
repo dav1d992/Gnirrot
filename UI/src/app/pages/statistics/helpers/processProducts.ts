@@ -15,8 +15,8 @@ export function processProducts(products: Product[]): {
     const monthCreated = product.created
       .toLocaleString('default', { month: 'short' })
       .toUpperCase();
-    const monthStarted = product.started
-      .toLocaleString('default', { month: 'short' })
+    const monthStarted = product?.started
+      ?.toLocaleString('default', { month: 'short' })
       .toUpperCase();
     const monthEnded = product?.ended
       ?.toLocaleString('default', { month: 'short' })
@@ -29,7 +29,7 @@ export function processProducts(products: Product[]): {
         amountStarted: 0,
       });
     }
-    if (!monthStats.has(monthStarted)) {
+    if (monthStarted && !monthStats.has(monthStarted)) {
       monthStats.set(monthStarted, {
         amountCreated: 0,
         amountEnded: 0,
@@ -45,7 +45,7 @@ export function processProducts(products: Product[]): {
     }
 
     monthStats.get(monthCreated)!.amountCreated++;
-    monthStats.get(monthStarted)!.amountStarted++;
+    if (monthStarted) monthStats.get(monthStarted)!.amountStarted++;
     if (monthEnded) monthStats.get(monthEnded)!.amountEnded++;
   });
 

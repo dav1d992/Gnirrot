@@ -16,12 +16,17 @@ export class MaterialsComponent implements OnInit {
   private readonly materialTypesService = inject(MaterialTypeService);
   private readonly productService = inject(ProductService);
 
-  allProducts: Product[] = [];
-  allMaterials: Material[] = [];
-  filteredMaterials: Material[] = [];
-  selectedMaterialType: MaterialType = <MaterialType>{ id: 0, name: 'All' };
-  materialTypeOptions: MaterialType[] = [<MaterialType>{ id: 0, name: 'All' }];
-  filterText: string = '';
+  public allProducts: Product[] = [];
+  public allMaterials: Material[] = [];
+  public filteredMaterials: Material[] = [];
+  public selectedMaterialType: MaterialType = <MaterialType>{
+    id: 0,
+    name: 'All',
+  };
+  public materialTypeOptions: MaterialType[] = [
+    <MaterialType>{ id: 0, name: 'All' },
+  ];
+  public filterText: string = '';
 
   ngOnInit() {
     this.loadProducts();
@@ -37,7 +42,7 @@ export class MaterialsComponent implements OnInit {
       : this.allMaterials;
   }
 
-  loadProducts() {
+  public loadProducts() {
     this.productService.getProducts().subscribe({
       next: (products) => {
         this.allProducts = products;
@@ -45,7 +50,7 @@ export class MaterialsComponent implements OnInit {
     });
   }
 
-  loadMaterials() {
+  public loadMaterials() {
     this.materialService.getMaterials().subscribe({
       next: (materials) => {
         this.allMaterials = materials;
@@ -53,7 +58,7 @@ export class MaterialsComponent implements OnInit {
     });
   }
 
-  loadMaterialTypes() {
+  public loadMaterialTypes() {
     this.materialTypesService.getMaterialTypes().subscribe({
       next: (materialTypes) => {
         this.materialTypeOptions.push(...materialTypes);
@@ -61,7 +66,7 @@ export class MaterialsComponent implements OnInit {
     });
   }
 
-  filterMaterials(filterValue: any) {
+  public filterMaterials(filterValue: any) {
     this.filterText = filterValue.target.value.toLowerCase();
 
     this.filteredMaterials = this.allMaterials.filter(
@@ -72,7 +77,7 @@ export class MaterialsComponent implements OnInit {
     );
   }
 
-  filterMaterialsByMaterialType(materialType: MaterialType) {
+  public filterMaterialsByMaterialType(materialType: MaterialType) {
     this.filteredMaterials = this.allMaterials.filter(
       (material) =>
         (materialType.id === 0 ||
