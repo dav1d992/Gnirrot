@@ -37,7 +37,87 @@
       <p class="no-margins">{{ employee()?.dateOfBirth }}</p>
     </div>
   </p-card>
-  <div class="v-stack">
-    <h2>BUY ME SOME</h2>
+  <div class="details-container">
+    <h2>Employee Details</h2>
+    <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmit()">
+      <div class="form-container">
+        <div class="h-stack-space-between gap-x2">
+          <label for="shortName">Short Name</label>
+          <input
+            pInputText
+            type="text"
+            id="shortName"
+            formControlName="shortName"
+            placeholder="Short name"
+          />
+        </div>
+        <div class="h-stack-space-between gap-x2">
+          <label for="firstName">First Name</label>
+          <input
+            pInputText
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="First name"
+          />
+        </div>
+        <div class="h-stack-space-between gap-x2">
+          <label for="lastName">Last Name</label>
+          <input
+            pInputText
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Last name"
+          />
+        </div>
+        <div class="h-stack-space-between gap-x2">
+          <label for="photoUrl">Photo URL</label>
+          <input
+            pInputText
+            type="text"
+            id="photoUrl"
+            formControlName="photoUrl"
+            placeholder="Photo URL"
+          />
+        </div>
+        <div class="h-stack-space-between gap-x2">
+          <label for="joined">Joined</label>
+          <p-calendar
+            id="joined"
+            formControlName="joined"
+            [showIcon]="true"
+          ></p-calendar>
+        </div>
+        <div class="h-stack-space-between gap-x2">
+          <label for="dateOfBirth">Date of Birth</label>
+          <p-calendar
+            id="dateOfBirth"
+            formControlName="dateOfBirth"
+            [showIcon]="true"
+          ></p-calendar>
+        </div>
+        <div class="h-stack-space-between gap-x2">
+          <label for="workplace">Workplace</label>
+          <input
+            pInputText
+            type="text"
+            id="workplace"
+            formControlName="workplace"
+            placeholder="Workplace"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button
+          pButton
+          type="submit"
+          [disabled]="!userDetailsForm.valid"
+          icon="pi pi-save"
+          class="p-button-success"
+        ></button>
+      </div>
+    </form>
   </div>
 </div>

@@ -11,7 +11,7 @@ import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { CarouselModule } from 'primeng/carousel';
@@ -72,6 +72,7 @@ import { MaterialTypeEffects } from '@store/material-type/material-type.effect';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
     ButtonModule,
