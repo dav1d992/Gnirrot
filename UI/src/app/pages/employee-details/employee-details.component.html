@@ -1,41 +1,43 @@
 <div class="h-stack gap">
   <p-card
-    header="{{ employee?.shortName }}"
-    subheader="{{ employee?.firstName | titlecase }} {{ employee?.lastName }}"
+    header="{{ employee()?.shortName | uppercase }}"
+    subheader="{{ employee()?.firstName | titlecase }} {{
+      employee()?.lastName
+    }}"
     [style]="{ width: '30dvh' }"
   >
     <ng-template pTemplate="header">
       <div class="img-container">
         <img
-          src="{{ employee?.photoUrl || './assets/employee.png' }}"
-          alt="{{ employee?.shortName }}"
+          src="{{ employee()?.photoUrl || './assets/user.png' }}"
+          alt="{{ employee()?.shortName }}"
           class="employee-profile-picture"
         />
       </div>
     </ng-template>
     <div class="info-container">
       <h4 class="margin-bot-only">Location:</h4>
-      <p class="no-margins">{{ employee?.workplace }}</p>
+      <p class="no-margins">{{ employee()?.workplace }}</p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Joined:</h4>
       <p class="no-margins">
-        {{ employee?.created | timeAgo }}
+        {{ employee()?.joined | timeAgo }}
       </p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Employee since:</h4>
-      <p class="no-margins">{{ employee?.created | date : "mediumDate" }}</p>
+      <p class="no-margins">{{ employee()?.joined | date : "mediumDate" }}</p>
     </div>
 
     <div class="info-container">
       <h4 class="margin-bot-only">Birthday:</h4>
-      <p class="no-margins">{{ employee?.dateOfBirth }}</p>
+      <p class="no-margins">{{ employee()?.dateOfBirth }}</p>
     </div>
   </p-card>
-  <p-tabView>
-    <p-tabPanel header="Messages"> Messages go here </p-tabPanel>
-  </p-tabView>
+  <div class="v-stack">
+    <h2>BUY ME SOME</h2>
+  </div>
 </div>

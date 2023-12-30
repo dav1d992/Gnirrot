@@ -46,6 +46,7 @@ export class NavComponent implements OnInit {
         label: 'Home',
         icon: 'pi pi-fw pi-home',
         routerLink: ['/'],
+        active: false,
       },
     ];
     if (this.currentUser) {
@@ -56,21 +57,25 @@ export class NavComponent implements OnInit {
           label: 'Employees',
           icon: 'pi pi-fw pi-users',
           routerLink: ['/employees'],
+          active: false,
         },
         {
           label: 'Products',
           icon: 'pi pi-fw pi-th-large',
           routerLink: ['/products'],
+          active: true,
         },
         {
           label: 'Materials',
           icon: 'pi pi-fw pi-th-large',
           routerLink: ['/materials'],
+          active: false,
         },
         {
           label: 'Statistics',
           icon: 'pi pi-fw pi-th-large',
           routerLink: ['/statistics'],
+          active: false,
         }
       );
     }

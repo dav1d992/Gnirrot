@@ -8,7 +8,7 @@ public class MemberDto
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public DateOnly DateOfBirth { get; set; }
-    public DateTime Created { get; set; }
+    public DateTime Joined { get; set; }
     public string Workplace { get; set; }
     public string PhotoUrl { get; set; }
     public Role Role { get; set; }

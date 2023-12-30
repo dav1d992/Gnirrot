@@ -44,6 +44,12 @@ import { MaterialsComponent } from '@pages/materials/materials.component';
 import { MaterialCardComponent } from '@components/material-card/material-card.component';
 import { ProductEffects } from '@store/product/product.effect';
 import { productFeature } from '@store/product';
+import { CategoryEffects } from '@store/category/category.effect';
+import { categoryFeature } from '@store/category';
+import { materialFeature } from '@store/material';
+import { MaterialEffects } from '@store/material/material.effect';
+import { materialTypeFeature } from '@store/material-type';
+import { MaterialTypeEffects } from '@store/material-type/material-type.effect';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,10 +89,19 @@ import { productFeature } from '@store/product';
     InputTextareaModule,
     CalendarModule,
     TableModule,
-    EffectsModule.forRoot([UserEffects, ProductEffects]),
+    EffectsModule.forRoot([
+      UserEffects,
+      ProductEffects,
+      CategoryEffects,
+      MaterialEffects,
+      MaterialTypeEffects,
+    ]),
     StoreModule.forRoot({}),
     StoreModule.forFeature(userFeature),
     StoreModule.forFeature(productFeature),
+    StoreModule.forFeature(categoryFeature),
+    StoreModule.forFeature(materialFeature),
+    StoreModule.forFeature(materialTypeFeature),
     StoreDevtoolsModule.instrument({
       maxAge: 500,
     }),

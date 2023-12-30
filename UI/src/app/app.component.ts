@@ -4,6 +4,9 @@ import { Account } from './models/account';
 import { userActions } from '@store/user';
 import { Store } from '@ngrx/store';
 import { productActions } from '@store/product';
+import { categoryActions } from '@store/category';
+import { materialActions } from '@store/material';
+import { materialTypeActions } from '@store/material-type';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +21,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(userActions.getUsers());
     this.store.dispatch(productActions.getProducts());
+    this.store.dispatch(categoryActions.getCategories());
+    this.store.dispatch(materialActions.getMaterials());
+    this.store.dispatch(materialTypeActions.getMaterialTypes());
 
     this.setCurrentUser();
   }

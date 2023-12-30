@@ -1,20 +1,20 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '@models/user';
 import { Photo } from '@models/photo';
-import { UserService } from '@services/user.service';
+import { Store } from '@ngrx/store';
+import { selectAllUsers } from '@store/user/user.selectors';
 
 @Component({
   selector: 'app-employee-details',
   templateUrl: './employee-details.component.html',
   styleUrls: ['./employee-details.component.scss'],
 })
-export class EmployeeDetailsComponent implements OnInit {
-  private readonly userService = inject(UserService);
+export class EmployeeDetailsComponent {
   private readonly route = inject(ActivatedRoute);
+  private readonly store = inject(Store);
+  private storeUsers = this.store.selectSignal(selectAllUsers);
 
-  employee: User | undefined;
-  responsiveOptions = [
+  public responsiveOptions = [
     {
       breakpoint: '1024px',
       numVisible: 5,
@@ -30,17 +30,10 @@ export class EmployeeDetailsComponent implements OnInit {
   ];
   images: Photo[] = [];
 
-  ngOnInit(): void {
-    this.loadEmployee();
-  }
-
-  loadEmployee() {
-    var username = this.route.snapshot.paramMap.get('username');
+  public employee = computed(() => {
+    const username = this.route.snapshot.paramMap.get('username');
     if (!username) return;
-    this.userService.getUser(username).subscribe({
-      next: (employee) => {
-        this.employee = employee;
-      },
-    });
-  }
+
+    return this.storeUsers().find((user) => user.shortName === username);
+  });
 }

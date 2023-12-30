@@ -1,68 +1,60 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Category } from '@models/category';
 import { Product } from '@models/product';
-import { CategoryService } from '@services/category.service';
-import { ProductService } from '@services/product.service';
+import { Store } from '@ngrx/store';
+import { selectAllCategories } from '@store/category/category.selectors';
+import { selectAllProducts } from '@store/product/product.selectors';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
-  private readonly productService = inject(ProductService);
-  private readonly categoriesService = inject(CategoryService);
+export class ProductsComponent {
+  private readonly store = inject(Store);
 
-  allProducts: Product[] = [];
-  filteredProducts: Product[] = [];
-  selectedCategory: Category = <Category>{ id: 0, name: 'All' };
-  selectedStatus: { label: string; value: string } = {
+  private storeProducts = this.store.selectSignal(selectAllProducts);
+  private storeCategories = this.store.selectSignal(selectAllCategories);
+
+  public filteredProducts: Product[] = [];
+  public selectedCategory: Category = <Category>{ id: 0, name: 'All' };
+  public selectedStatus: { label: string; value: string } = {
     label: 'All',
     value: 'All',
   };
-  categoryOptions: Category[] = [<Category>{ id: 0, name: 'All' }];
-  filterText: string = '';
-  statusOptions = [
+  public filterText: string = '';
+  public statusOptions = [
     { label: 'All', value: 'All' },
     { label: 'Created', value: 'Created' },
     { label: 'Started', value: 'Started' },
     { label: 'Ended', value: 'Ended' },
   ];
-  ngOnInit() {
-    this.loadProducts();
-    this.loadCategories();
-  }
+
+  public categoryOptions = computed(() => {
+    const categories = this.storeCategories();
+
+    if (categories.some((category) => category.id !== 0)) {
+      categories.unshift(<Category>{ id: 0, name: 'All' });
+      return categories;
+    } else {
+      return [];
+    }
+  });
 
   get productsToDisplay() {
     return this.selectedCategory.id === 0 &&
       this.selectedStatus.value === 'All' &&
       this.filterText === ''
-      ? this.allProducts
+      ? this.storeProducts()
       : this.filteredProducts;
   }
 
-  loadProducts() {
-    this.productService.getProducts().subscribe({
-      next: (products) => {
-        this.allProducts = products;
-      },
-    });
-  }
-
-  loadCategories() {
-    this.categoriesService.getCategories().subscribe({
-      next: (categories) => {
-        this.categoryOptions.push(...categories);
-      },
-    });
-  }
-
-  filterProducts(filterValue?: any) {
+  public filterProducts(filterValue?: any) {
     if (filterValue) {
       this.filterText = filterValue.target.value.toLowerCase();
     }
 
-    this.filteredProducts = this.allProducts
+    this.filteredProducts = this.storeProducts()
       .filter(
         (product) =>
           (this.selectedCategory.id === 0 ||

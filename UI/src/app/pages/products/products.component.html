@@ -6,7 +6,7 @@
     (input)="filterProducts($event)"
   />
   <p-dropdown
-    [options]="categoryOptions"
+    [options]="categoryOptions()"
     [(ngModel)]="selectedCategory"
     optionLabel="name"
     placeholder="Select a Category"

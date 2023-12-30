@@ -33,9 +33,9 @@ export class ProfileComponent implements OnInit {
   private readonly userService = inject(UserService);
   private readonly toastService = inject(ToastService);
 
-  user: User | undefined;
-  account: Account | null = null;
-  responsiveOptions = [
+  public user: User | undefined;
+  public account: Account | null = null;
+  public responsiveOptions = [
     {
       breakpoint: '1024px',
       numVisible: 5,
@@ -50,21 +50,21 @@ export class ProfileComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: (user) => (this.account = user),
     });
     this.loadUser();
   }
 
-  loadUser() {
+  public loadUser() {
     if (!this.account) return;
     this.userService.getUser(this.account.userName).subscribe({
       next: (user) => (this.user = user),
     });
   }
 
-  updateUser() {
+  public updateUser() {
     this.userService.updateUser(this.editForm?.value).subscribe({
       next: (_) => {
         console.log('LOLOLOL');
