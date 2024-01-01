@@ -11,8 +11,10 @@ import {
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Photo } from '@models/photo';
+import { User } from '@models/user';
 import { Store } from '@ngrx/store';
 import { selectAllProducts } from '@store/product/product.selectors';
+import { userActions } from '@store/user';
 import { selectAllUsers } from '@store/user/user.selectors';
 
 @Component({
@@ -43,7 +45,6 @@ export class EmployeeDetailsComponent {
       (p) => p.employee.id === this.employee()!.id && p.ended != null
     );
 
-    // Define the type for the accumulator
     interface MonthCount {
       [key: string]: number;
     }
@@ -144,6 +145,17 @@ export class EmployeeDetailsComponent {
   images: Photo[] = [];
 
   public onSubmit() {
-    console.log('Employee Data: ', this.employee);
+    const request: User = {
+      id: this.employee()!.id,
+      shortName: this.employee()!.shortName,
+      firstName: this.userDetailsForm.value.firstName as string,
+      lastName: this.userDetailsForm.value.lastName as string,
+      dateOfBirth: this.userDetailsForm.value.dateOfBirth as Date,
+      workplace: this.userDetailsForm.value.workplace as string,
+      photoUrl: this.userDetailsForm.value.photoUrl as string,
+      joined: this.employee()!.joined,
+      role: this.employee()!.role,
+    };
+    this.store.dispatch(userActions.updateUser(request));
   }
 }

@@ -33,13 +33,12 @@ public class UsersController : BaseApiController
         return await _userRepository.GetMemberAsync(username);
     }
 
-    [Authorize]
     [HttpPut]
     public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
     {
-        var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        var user = await _userRepository.GetUserByUsernameAsync(username);
-
+        var user = await _userRepository.GetUserByUsernameAsync(memberUpdateDto.ShortName);
+        Console.WriteLine(memberUpdateDto.DateOfBirth);
+        Console.WriteLine(user.ShortName);
         if (user == null) return NotFound();
 
         _mapper.Map(memberUpdateDto, user);

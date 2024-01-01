@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { User } from '@models/user';
-import { map, of } from 'rxjs';
+import { catchError, map, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -31,11 +31,20 @@ export class UserService {
     return this.http.get<User>(this.baseUrl + 'users/' + username);
   }
 
-  updateUser(user: User) {
-    return this.http.put(this.baseUrl + 'users', user).pipe(
-      map(() => {
-        const index = this.users.indexOf(user);
-        this.users[index] = { ...this.users[index], ...user };
+  updateUser(updatedUser: User) {
+    const request = {
+      shortName: updatedUser.shortName,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+      dateOfBirth: updatedUser.dateOfBirth.toISOString().split('T')[0],
+      workplace: updatedUser.workplace,
+      photoUrl: updatedUser.photoUrl,
+    };
+
+    return this.http.put(this.baseUrl + 'users', request).pipe(
+      catchError((error) => {
+        console.error('Error occurred while updating user:', error);
+        return throwError(error);
       })
     );
   }
