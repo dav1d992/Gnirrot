@@ -13,6 +13,7 @@ import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { CarouselModule } from 'primeng/carousel';
 import { AvatarModule } from 'primeng/avatar';
@@ -80,6 +81,7 @@ import { MaterialTypeEffects } from '@store/material-type/material-type.effect';
     MenubarModule,
     InputTextModule,
     DropdownModule,
+    MultiSelectModule,
     SplitButtonModule,
     CarouselModule,
     ToastModule,

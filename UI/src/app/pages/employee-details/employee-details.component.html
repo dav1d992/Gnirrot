@@ -34,7 +34,9 @@
 
     <div class="info-container">
       <h4 class="margin-bot-only">Birthday:</h4>
-      <p class="no-margins">{{ employee()?.dateOfBirth }}</p>
+      <p class="no-margins">
+        {{ employee()?.dateOfBirth | date : "mediumDate" }}
+      </p>
     </div>
   </p-card>
   <p-tabView>

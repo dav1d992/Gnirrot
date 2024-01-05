@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from '@models/product';
-import { map, of } from 'rxjs';
+import { catchError, map, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -34,10 +34,25 @@ export class ProductService {
   }
 
   public updateProduct(product: Product) {
-    return this.http.put(this.baseUrl + 'products', product).pipe(
-      map(() => {
-        const index = this.products.indexOf(product);
-        this.products[index] = { ...this.products[index], ...product };
+    const request = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      photoUrl: product.photoUrl,
+      created: product.created.toISOString().split('T')[0],
+      started: product.started?.toISOString().split('T')[0],
+      ended: product.ended?.toISOString().split('T')[0],
+      category: product.category,
+      categoryName: product.category.name,
+      photos: product.photos,
+      materials: product.materials,
+      employee: product.employee,
+    };
+
+    return this.http.put(this.baseUrl + 'products', request).pipe(
+      catchError((error) => {
+        console.error('Error occurred while updating product:', error);
+        return throwError(error);
       })
     );
   }

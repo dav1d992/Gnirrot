@@ -1,15 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UserService } from '@services/user.service';
-import {
-  EMPTY,
-  Observable,
-  catchError,
-  map,
-  mergeMap,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { Observable, map, mergeMap, switchMap, tap } from 'rxjs';
 import { userActions } from './user.actions';
 import { Action } from '@ngrx/store';
 import { ToastService } from '@services/toast.service';

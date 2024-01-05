@@ -77,6 +77,99 @@
         </p-table>
       </div>
     </p-tabPanel>
+    <p-tabPanel header="Edit">
+      <div class="details-container">
+        <form [formGroup]="productDetailsForm" (ngSubmit)="onSubmit()">
+          <div class="form-container">
+            <div class="h-stack-space-between gap-x2">
+              <label for="name">Name</label>
+              <input
+                pInputText
+                type="text"
+                id="name"
+                formControlName="name"
+                placeholder="Name"
+              />
+            </div>
+            <div class="h-stack-space-between gap-x2">
+              <label for="photoUrl">Photo URL</label>
+              <input
+                pInputText
+                type="text"
+                id="photoUrl"
+                formControlName="photoUrl"
+                placeholder="Photo URL"
+              />
+            </div>
+            <div class="h-stack-space-between gap-x2">
+              <label for="price">Price</label>
+              <input
+                pInputText
+                type="number"
+                id="price"
+                formControlName="price"
+                placeholder="Price"
+              />
+            </div>
+            <div class="h-stack-space-between gap-x2">
+              <label for="started">Started</label>
+              <p-calendar
+                id="started"
+                formControlName="started"
+                [showIcon]="true"
+              ></p-calendar>
+            </div>
+            <div class="h-stack-space-between gap-x2">
+              <label for="ended">Ended</label>
+              <p-calendar
+                id="ended"
+                formControlName="ended"
+                [showIcon]="true"
+              ></p-calendar>
+            </div>
+            <div class="h-stack-space-between gap-x2">
+              <label for="materials">Materials</label>
+              <p-multiSelect
+                [options]="storeMaterials()"
+                formControlName="materials"
+                placeholder="Select Cities"
+                optionLabel="name"
+                display="chip"
+                [showClear]="true"
+              ></p-multiSelect>
+            </div>
+            <div class="h-stack-space-between gap-x2">
+              <label for="category">Category</label>
+              <p-dropdown
+                formControlName="category"
+                [options]="storeCategories()"
+                optionLabel="name"
+                placeholder="Category"
+              ></p-dropdown>
+            </div>
+            <div class="h-stack-space-between gap-x2">
+              <label for="employee">Employee</label>
+              <p-dropdown
+                formControlName="employee"
+                [options]="storeUsers()"
+                optionLabel="shortName"
+                placeholder="Employee"
+              ></p-dropdown>
+            </div>
+          </div>
+
+          <div>
+            <button
+              pButton
+              type="submit"
+              [disabled]="!productDetailsForm.valid"
+              icon="pi pi-save"
+              class="p-button-success"
+            ></button>
+          </div>
+        </form>
+      </div>
+    </p-tabPanel>
     <p-tabPanel header="Photos">
       <h3 class="margin-bot-only">Photos submitted by buyer</h3>
 

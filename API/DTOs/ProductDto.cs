@@ -15,5 +15,5 @@ public class ProductDto
     public DateTime Created { get; set; } = DateTime.UtcNow;
     public DateTime Started { get; set; }
     public DateTime Ended { get; set; }
-    public AppUser Employee { get; set; }
+    public MemberDto Employee { get; set; }
 }

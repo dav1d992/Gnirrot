@@ -145,12 +145,20 @@ export class EmployeeDetailsComponent {
   images: Photo[] = [];
 
   public onSubmit() {
+    const utcDate = new Date(
+      Date.UTC(
+        this.userDetailsForm.value.dateOfBirth.getFullYear(),
+        this.userDetailsForm.value.dateOfBirth.getMonth(),
+        this.userDetailsForm.value.dateOfBirth.getDate()
+      )
+    );
+
     const request: User = {
       id: this.employee()!.id,
       shortName: this.employee()!.shortName,
       firstName: this.userDetailsForm.value.firstName as string,
       lastName: this.userDetailsForm.value.lastName as string,
-      dateOfBirth: this.userDetailsForm.value.dateOfBirth as Date,
+      dateOfBirth: utcDate,
       workplace: this.userDetailsForm.value.workplace as string,
       photoUrl: this.userDetailsForm.value.photoUrl as string,
       joined: this.employee()!.joined,

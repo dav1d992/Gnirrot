@@ -37,8 +37,6 @@ public class UsersController : BaseApiController
     public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
     {
         var user = await _userRepository.GetUserByUsernameAsync(memberUpdateDto.ShortName);
-        Console.WriteLine(memberUpdateDto.DateOfBirth);
-        Console.WriteLine(user.ShortName);
         if (user == null) return NotFound();
 
         _mapper.Map(memberUpdateDto, user);

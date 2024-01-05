@@ -66,7 +66,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               break;
             default:
               this.toastService.showToast(<ToastProps>{
-                title: 'Error',
+                title: error.status.toString(),
                 description: 'Something unexpected went wrong',
                 lifetime: 10000,
                 severity: SEVERITY_LEVEL.Error,
