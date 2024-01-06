@@ -165,6 +165,9 @@ namespace API.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PhotoUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 

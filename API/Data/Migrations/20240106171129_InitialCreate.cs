@@ -109,6 +109,7 @@ namespace API.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Price = table.Column<int>(type: "INTEGER", nullable: false),
+                    PhotoUrl = table.Column<string>(type: "TEXT", nullable: true),
                     Created = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Started = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Ended = table.Column<DateTime>(type: "TEXT", nullable: false),

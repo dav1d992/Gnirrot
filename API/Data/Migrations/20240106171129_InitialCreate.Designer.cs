@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231226194808_InitialCreate")]
+    [Migration("20240106171129_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -166,6 +166,9 @@ namespace API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhotoUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Price")

@@ -1,5 +1,6 @@
 using API.Data;
 using API.DTOs;
+using API.Entities;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -30,7 +31,7 @@ public class ProductRepository : IProductRepository
             .SingleOrDefaultAsync();
     }
 
-    public async Task<ProductDto> GetProductByIdAsync(int id)
+    public async Task<ProductDto> GetProductDtoByIdAsync(int id)
     {
         return await _context.Products
             .Include(p => p.Category)
@@ -56,8 +57,34 @@ public class ProductRepository : IProductRepository
         return _mapper.Map<IEnumerable<ProductDto>>(products);
     }
 
+    public async Task<Product> GetProductByIdAsync(int id)
+    {
+        return await _context.Products
+            .Include(p => p.Category)
+            .Include(p => p.Photos)
+            .Include(p => p.Employee)
+            .Include(p => p.Materials)
+                .ThenInclude(m => m.MaterialType).AsNoTracking()
+            .Where(x => x.Id == id)
+            .SingleOrDefaultAsync();
+    }
+
     public async Task<bool> SaveAllAsync()
     {
         return await _context.SaveChangesAsync() > 0;
     }
+
+    public void Update(Product product)
+    {
+        // Attach the product if it's not already tracked
+        if (_context.Entry(product).State == EntityState.Detached)
+        {
+            _context.Products.Attach(product);
+        }
+
+        // EF Core automatically tracks changes to navigation properties
+        // so there's no need to manually set the state for each material
+        _context.Entry(product).State = EntityState.Modified;
+    }
+
 }

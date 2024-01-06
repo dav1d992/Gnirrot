@@ -11,7 +11,7 @@ namespace API.Controllers;
 public class ProductsController : BaseApiController
 {
     private readonly IProductRepository _productRepository;
-    public IMapper _mapper;
+    private readonly IMapper _mapper;
 
     public ProductsController(IProductRepository productRepository, IMapper mapper)
     {
@@ -35,6 +35,21 @@ public class ProductsController : BaseApiController
     [HttpGet("{id}")]
     public async Task<ActionResult<ProductDto>> GetProductById(int id)
     {
-        return await _productRepository.GetProductByIdAsync(id);
+        return await _productRepository.GetProductDtoByIdAsync(id);
     }
+
+    [HttpPut]
+    public async Task<ActionResult> UpdateProduct(ProductUpdateDto productDto)
+    {
+        var product = await _productRepository.GetProductByIdAsync(productDto.Id);
+        if (product == null) return NotFound();
+
+        // The Update method in the repository will handle the complex logic
+        await _productRepository.UpdateProductWithMaterialsAsync(product, productDto);
+
+        if (await _productRepository.SaveAllAsync()) return NoContent();
+
+        return BadRequest($"Failed to update product");
+    }
+
 }

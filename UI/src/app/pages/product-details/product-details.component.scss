@@ -38,3 +38,15 @@
   margin-bottom: 1rem;
   width: 70vw;
 }
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
