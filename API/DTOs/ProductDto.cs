@@ -29,5 +29,5 @@ public class ProductUpdateDto
     public DateTime Created { get; set; } = DateTime.UtcNow;
     public DateTime Started { get; set; }
     public DateTime Ended { get; set; }
-    // public MemberDto Employee { get; set; }
+    public MemberDto Employee { get; set; }
 }

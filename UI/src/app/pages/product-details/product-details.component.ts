@@ -109,7 +109,6 @@ export class ProductDetailsComponent {
             this.product()!.ended
               ? new Date(this.product()!.ended!)
               : undefined,
-
             Validators.required
           ),
           employee: new FormControl(

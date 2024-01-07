@@ -11,6 +11,24 @@
       .p-card-content {
         padding-top: 0;
       }
+      .info-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        h4 {
+          width: 100%;
+        }
+
+        p {
+          flex: 1 0 100%;
+          margin: 0;
+          white-space: normal;
+        }
+      }
     }
   }
 }
@@ -31,12 +49,6 @@
 .margin-bot-only {
   margin-top: 0;
   margin-bottom: 0.5rem;
-}
-
-.info-container {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 70vw;
 }
 
 .details-container {

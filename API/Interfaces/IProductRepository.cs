@@ -10,4 +10,6 @@ public interface IProductRepository
     Task<ProductDto> GetProductDtoByIdAsync(int id);
     Task<IEnumerable<ProductDto>> GetProductsAsync();
     void Update(Product product);
+    public Task UpdateProductWithMaterialsAsync(Product product, ProductUpdateDto productDto);
+
 }

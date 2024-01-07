@@ -41,7 +41,12 @@
 
     <div class="info-container">
       <h4 class="margin-bot-only">Employee:</h4>
-      <p class="no-margins">{{ product()?.employee?.shortName | uppercase }}</p>
+      <p class="no-margins">
+        {{ product()?.employee?.firstName }}
+        {{ product()?.employee?.lastName }} ({{
+          product()?.employee?.shortName | uppercase
+        }})
+      </p>
     </div>
   </p-card>
   <p-tabView>
@@ -132,7 +137,7 @@
               <p-multiSelect
                 [options]="storeMaterials()"
                 formControlName="materials"
-                placeholder="Select Cities"
+                placeholder="Select materials"
                 optionLabel="name"
                 display="chip"
                 [showClear]="true"
@@ -141,6 +146,7 @@
             <div class="h-stack-space-between gap-x2">
               <label for="category">Category</label>
               <p-dropdown
+                id="category"
                 formControlName="category"
                 [options]="storeCategories()"
                 optionLabel="name"
@@ -150,11 +156,16 @@
             <div class="h-stack-space-between gap-x2">
               <label for="employee">Employee</label>
               <p-dropdown
+                id="employee"
                 formControlName="employee"
                 [options]="storeUsers()"
-                optionLabel="shortName"
-                placeholder="Employee"
-              ></p-dropdown>
+                placeholder="Select employee"
+              >
+                <ng-template let-user pTemplate="item">
+                  <b>{{ user.shortName | uppercase }}</b> {{ user.firstName }}
+                  {{ user.lastName }}
+                </ng-template>
+              </p-dropdown>
             </div>
           </div>
 

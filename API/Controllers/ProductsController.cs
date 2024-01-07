@@ -44,12 +44,8 @@ public class ProductsController : BaseApiController
         var product = await _productRepository.GetProductByIdAsync(productDto.Id);
         if (product == null) return NotFound();
 
-        // The Update method in the repository will handle the complex logic
         await _productRepository.UpdateProductWithMaterialsAsync(product, productDto);
 
-        if (await _productRepository.SaveAllAsync()) return NoContent();
-
-        return BadRequest($"Failed to update product");
+        return NoContent();
     }
-
 }

@@ -59,7 +59,7 @@ public class ProductRepository : IProductRepository
 
     public async Task<Product> GetProductByIdAsync(int id)
     {
-        return await _context.Products
+        return await _context.Products.AsNoTracking()
             .Include(p => p.Category)
             .Include(p => p.Photos)
             .Include(p => p.Employee)
@@ -76,15 +76,87 @@ public class ProductRepository : IProductRepository
 
     public void Update(Product product)
     {
-        // Attach the product if it's not already tracked
         if (_context.Entry(product).State == EntityState.Detached)
         {
             _context.Products.Attach(product);
         }
 
-        // EF Core automatically tracks changes to navigation properties
-        // so there's no need to manually set the state for each material
         _context.Entry(product).State = EntityState.Modified;
     }
 
+    public async Task UpdateProductWithMaterialsAsync(Product product, ProductUpdateDto productDto)
+    {
+        // Detach the product from the tracking context to prevent EF Core from interpreting 
+        // the update as an insertion of a new relationship
+        _context.Entry(product).State = EntityState.Detached;
+
+        var updatedProduct = await _context.Products
+            .Include(p => p.Materials)
+            .Include(p => p.Category)
+            .Include(p => p.Employee)
+            .FirstOrDefaultAsync(p => p.Id == product.Id);
+
+        if (updatedProduct != null)
+        {
+            if (updatedProduct.Category.Id != productDto.Category.Id)
+            {
+                updatedProduct.Category = productDto.Category;
+            }
+
+            if (updatedProduct.Employee.Id != productDto.Employee.Id)
+            {
+                updatedProduct.Employee = new AppUser
+                {
+                    Id = productDto.Employee.Id,
+                    ShortName = productDto.Employee.ShortName,
+                    FirstName = productDto.Employee.FirstName,
+                    LastName = productDto.Employee.LastName,
+                    DateOfBirth = productDto.Employee.DateOfBirth,
+                    Joined = productDto.Employee.Joined,
+                    Workplace = productDto.Employee.Workplace,
+                    PhotoUrl = productDto.Employee.PhotoUrl,
+                    Role = productDto.Employee.Role,
+                    PasswordHash = product.Employee.PasswordHash,
+                    PasswordSalt = product.Employee.PasswordSalt
+                };
+            }
+            
+            await UpdateProductMaterialsAsync(updatedProduct, productDto.Materials);
+
+            _context.Products.Update(updatedProduct);
+            await _context.SaveChangesAsync();
+        }
+    }
+
+
+    private async Task UpdateProductMaterialsAsync(Product product, List<MaterialDto> newMaterials)
+    {
+        var currentMaterialIds = product.Materials.Select(m => m.Id).ToList();
+        var newMaterialIds = newMaterials.Select(m => m.Id).ToList();
+
+        var materialsToAdd = newMaterialIds.Except(currentMaterialIds);
+
+        foreach (var materialId in materialsToAdd)
+        {
+            if (!product.Materials.Any(m => m.Id == materialId)) // Check if the material is already linked
+            {
+                var material = await _context.Materials.FindAsync(materialId);
+                if (material != null)
+                {
+                    product.Materials.Add(material);
+                }
+            }
+        }
+
+        var materialsToRemove = currentMaterialIds.Except(newMaterialIds);
+
+        foreach (var materialId in materialsToRemove)
+        {
+            var material = product.Materials.FirstOrDefault(m => m.Id == materialId);
+            if (material != null)
+            {
+                product.Materials.Remove(material);
+            }
+        }
+    }
 }

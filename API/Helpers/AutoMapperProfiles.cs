@@ -16,29 +16,7 @@ public class AutoMapperProfiles : Profile
             .ForMember(dto => dto.Materials, opt => opt.MapFrom(src => src.Materials));
         CreateMap<Photo, PhotoDto>();
         CreateMap<MemberUpdateDto, AppUser>();
-        CreateMap<ProductUpdateDto, Product>()            
-            .AfterMap((dto, product) =>
-        {
-        if (dto.Materials != null)
-            {
-                product.Materials = new List<Material>();
-                foreach (var materialDto in dto.Materials)
-                {
-                    var material = new Material
-                    {
-                        Id = materialDto.Id,
-                        Name = materialDto.Name,
-                        Price = materialDto.Price,
-                        AmountInStock = int.Parse(materialDto.AmountInStock),
-                        MaterialType = materialDto.MaterialType,
-                        Width = materialDto.Width,
-                        Height = materialDto.Height,
-                        Length = materialDto.Length
-                    };
-                    product.Materials.Add(material);
-                }
-            }
-        });
+        CreateMap<ProductUpdateDto, Product>();
         CreateMap<ProductDto, Product>()
             .ForMember(dest => dest.Photos, opt => opt.Ignore())
             .ForMember(dest => dest.Materials, opt => opt.MapFrom(src => src.Materials))
