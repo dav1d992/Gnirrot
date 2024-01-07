@@ -134,41 +134,51 @@
             </div>
             <div class="h-stack-space-between gap-x2">
               <label for="materials">Materials</label>
-              <p-multiSelect
+              <!-- Dropdown for selecting materials -->
+              <p-dropdown
                 [options]="storeMaterials()"
-                formControlName="materials"
+                (onChange)="onMaterialSelect($event.value)"
                 placeholder="Select materials"
                 optionLabel="name"
-                display="chip"
-                [showClear]="true"
-              ></p-multiSelect>
-            </div>
-            <div class="h-stack-space-between gap-x2">
-              <label for="category">Category</label>
-              <p-dropdown
-                id="category"
-                formControlName="category"
-                [options]="storeCategories()"
-                optionLabel="name"
-                placeholder="Category"
-              ></p-dropdown>
-            </div>
-            <div class="h-stack-space-between gap-x2">
-              <label for="employee">Employee</label>
-              <p-dropdown
-                id="employee"
-                formControlName="employee"
-                [options]="storeUsers()"
-                placeholder="Select employee"
               >
-                <ng-template let-user pTemplate="item">
-                  <b>{{ user.shortName | uppercase }}</b> {{ user.firstName }}
-                  {{ user.lastName }}
-                </ng-template>
               </p-dropdown>
+
+              <!-- Display selected materials as chips -->
+              <div class="selected-materials">
+                <p-chip
+                  *ngFor="let material of materialsControl.value; let i = index"
+                  [label]="material.name"
+                  [removable]="true"
+                  (onRemove)="removeMaterial(i)"
+                >
+                </p-chip>
+              </div>
             </div>
           </div>
-
+          <div class="h-stack-space-between gap-x2">
+            <label for="category">Category</label>
+            <p-dropdown
+              id="category"
+              formControlName="category"
+              [options]="storeCategories()"
+              optionLabel="name"
+              placeholder="Category"
+            ></p-dropdown>
+          </div>
+          <div class="h-stack-space-between gap-x2">
+            <label for="employee">Employee</label>
+            <p-dropdown
+              id="employee"
+              formControlName="employee"
+              [options]="storeUsers()"
+              placeholder="Select employee"
+            >
+              <ng-template let-user pTemplate="item">
+                <b>{{ user.shortName | uppercase }}</b> {{ user.firstName }}
+                {{ user.lastName }}
+              </ng-template>
+            </p-dropdown>
+          </div>
           <div>
             <button
               pButton

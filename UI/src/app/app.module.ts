@@ -14,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { ChipModule } from 'primeng/chip';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { CarouselModule } from 'primeng/carousel';
 import { AvatarModule } from 'primeng/avatar';
@@ -90,6 +91,7 @@ import { MaterialTypeEffects } from '@store/material-type/material-type.effect';
     TabViewModule,
     GalleriaModule,
     InputTextareaModule,
+    ChipModule,
     CalendarModule,
     TableModule,
     EffectsModule.forRoot([

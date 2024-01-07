@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '@models/category';
 import { Material } from '@models/material';
@@ -61,14 +61,33 @@ export class ProductDetailsComponent {
     return imageUrls;
   });
 
+  get materialsControl() {
+    return this.productDetailsForm.get('materials') as FormArray;
+  }
+
+  onMaterialSelect(material: Material) {
+    console.log('🚀 ~ material:', material);
+    // Add the selected material to the form control value
+    this.materialsControl.value.push(material);
+    this.materialsControl.updateValueAndValidity(); // Update the validity status of the control
+  }
+
+  removeMaterial(index: number) {
+    // Remove the material from the form control value
+    this.materialsControl.value.splice(index, 1);
+    this.materialsControl.updateValueAndValidity();
+  }
+
   constructor() {
     this.productDetailsForm = new FormGroup({
       name: new FormControl(this.product()?.name, Validators.required),
       photoUrl: new FormControl(this.product()?.photoUrl, Validators.required),
       price: new FormControl(this.product()?.price, Validators.required),
       category: new FormControl(this.product()?.category, Validators.required),
-      materials: new FormControl(
-        this.product()?.materials,
+      materials: new FormArray(
+        this.product()?.materials.map(
+          (material) => new FormControl(material)
+        ) || [],
         Validators.required
       ),
       created: new FormControl(this.product()?.created, Validators.required),
@@ -91,8 +110,10 @@ export class ProductDetailsComponent {
             this.product()!.category,
             Validators.required
           ),
-          materials: new FormControl(
-            this.product()!.materials,
+          materials: new FormArray(
+            this.product()!.materials.map(
+              (material) => new FormControl(material)
+            ),
             Validators.required
           ),
           created: new FormControl(
